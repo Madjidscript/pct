@@ -1,0 +1,39 @@
+body{
+    margin-bottom: 30px;
+}
+textarea {
+    padding: 10px; /* Espacement interne */
+    width: 100%; /* Largeur à 100% du contenant */
+    min-height: 150px; /* Hauteur minimale */
+    font-size: 16px; /* Taille de police */
+    border: 1px solid #ccc; /* Bordure grise */
+    border-radius: 5px; /* Coins arrondis */
+    resize: vertical; /* Permettre uniquement le redimensionnement vertical */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    font-family: Arial, sans-serif; /* Police de caractères */
+    transition: border-color 0.3s ease-in-out; /* Animation de transition pour la bordure */
+}
+
+/* Style pour le focus */
+textarea:focus {
+    outline: none; /* Supprimer le contour par défaut */
+    border-color: #6e8cb6; /* Bordure bleue lorsqu'il est en focus */
+}
+
+.contactImage{
+    display: grid;
+    place-items: center; /* Centre l'élément dans la grille */
+    width: 100vw; /* Largeur égale à la largeur de la fenêtre */
+    height: 50vh; /* Hauteur égale à la hauteur de la fenêtre */
+    background-color: #f0f0f0; /* Couleur de fond du cadre */
+    margin-bottom: 10px;
+    z-index: 1;
+}
+
+.contactImage .image{
+    max-width: 100%; /* Largeur maximale de l'image */
+    max-height: 100%; /* Hauteur maximale de l'image */
+    display: block; /* Pour éviter l'espace sous l'image */
+    border-radius: 8px; /* Coins arrondis du cadre */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
