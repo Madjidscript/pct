@@ -1,9 +1,9 @@
-const Artisan = require("../model/artisan")
+const Realisation = require("../model/realisation")
 
-const otherArtisan = class {
+const otherRealisation = class {
 static afficheTout = async()=>{
   try {
-    const affiche = await Artisan.find()
+    const affiche = await Realisation.find()
     return affiche
   } catch (error) {
   console.log("mon erreur",error);  
@@ -12,15 +12,7 @@ static afficheTout = async()=>{
 
 static utilisarteuParID = async(id)=>{
     try {
-        const recupParId = await Artisan.findById(id)
-         return recupParId
-    } catch (error) {
-        console.log("mon erreur",error);
-    }
-}
-static utilisarteuParMetier = async(metier)=>{
-    try {
-        const recupParId = await Artisan.find({metier:metier}).exec()
+        const recupParId = await Realisation.findById(id)
          return recupParId
     } catch (error) {
         console.log("mon erreur",error);
@@ -29,7 +21,7 @@ static utilisarteuParMetier = async(metier)=>{
 
 static utilisateurParEmail = async(email)=>{
     try {
-        const recupParEmail = await Artisan.findOne({email:email})
+        const recupParEmail = await Realisation.findOne({email:email})
         return recupParEmail
     } catch (error) {
         console.log("mon erreur",error);
@@ -38,7 +30,7 @@ static utilisateurParEmail = async(email)=>{
 
 static inscription = async(utilisateur)=>{
     try {
-        const inscription  = await Artisan.insertMany(utilisateur)
+        const inscription  = await Realisation.insertMany(utilisateur)
         return inscription
     } catch (error) {
         console.log('mon erreur',error);
@@ -47,7 +39,7 @@ static inscription = async(utilisateur)=>{
 
 static suppression = async(id)=>{
     try {
-        const supp = await Artisan.findByIdAndDelete(id)
+        const supp = await Realisation.findByIdAndDelete(id)
         return supp
     } catch (error) {
         console.log("mon erreur",error);
@@ -55,11 +47,11 @@ static suppression = async(id)=>{
 }
 static update= async(id,data)=>{
     try {
-        const modif = await Artisan.findByIdAndUpdate(id,data)
+        const modif = await Realisation.findByIdAndUpdate(id,data)
         return modif
     } catch (error) {
         console.log("mon erreur",error);
     }
 }
 }
-module.exports= otherArtisan
+module.exports= otherRealisation

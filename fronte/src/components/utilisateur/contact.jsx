@@ -4,6 +4,7 @@ import { useState,useEffect} from 'react';
 import "./css/contact.css"
 import Hearder from "./hearder";
 import Footer from "./footer.jsx"
+import Axios from '../../service/apiService.jsx';
 
 const Contact = (props) => {
    
@@ -28,6 +29,14 @@ const Contact = (props) => {
     const handlsubmit =(e)=>{
             e.preventDefault()
             console.log("les donner du formulaire",formdata)
+            Axios.post("/reclamation1",formdata)
+            .then((response)=>{
+               console.log("ma reponse de la reclamation 1", response);
+            })
+            .catch((error)=>{
+              console.log("mon erreur pour la reclamation",error)
+            })
+
             setformdata({
                 nomClient:"",
                 numClient:"",

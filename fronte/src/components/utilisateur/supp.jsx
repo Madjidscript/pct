@@ -26,7 +26,7 @@ function RecercheAcceuil2({openModal}) {
         const maposition = position
         setlatitudes(maposition.coords.latitude)
         setlongitudes(maposition.coords.longitude)
-        // console.log("mon latitude",setlatitudes);
+        console.log("mon latitude",setlatitudes);
 
     })
    
@@ -35,6 +35,7 @@ function RecercheAcceuil2({openModal}) {
   useEffect(()=>{
     Axios.get("/artisan")
     .then((response)=>{
+    console.log('mon artisant',response.data.Artisan);
    setdata(response.data.Artisan)
    
    const altitudes = response.data.Artisan.map((element) => element.altitude);
@@ -52,12 +53,26 @@ function RecercheAcceuil2({openModal}) {
   let metiersList= data.map((element)=>{
     console.log("mes metier",element.metier)
     return element.metier
+  
   })
-
   let uniqueMetiersList = [...new Set(metiersList)];
+  //ses deux fonction permet d'enlever les doublons dans mon tb
+  // let localitesList= data.map((element)=>{
+  //   console.log("mes metier",element.comune)
+  //   return element.comune
+  
+  // })
+  // let uniqueLocallist = [...new Set(localitesList)];
+  // console.log('mescomune',localitesList)
 
   console.log("altitudeclien",latitudes,"longitudeclien",longitudes)
   console.log("altitudeartisan",latitudesArtisan,"longitudeartisan",longitudesArtisan)
+ 
+  
+  
+  //listes des métiers et localités
+ 
+  
 
   //Fonction pour gérer l'entrée des métiers
   const handleMetierChange = (e) => {
@@ -67,9 +82,19 @@ function RecercheAcceuil2({openModal}) {
       metier.toLowerCase().includes(value.toLowerCase())
     );
     setFilteredMetiers(filtered);
-    console.log("mes metier filtrer",filteredMetiers)
     
   };
+
+  // Fonction pour gérer l'entrée des localités
+  // const handleLocaliteChange = (e) => {
+  //   const value = e.target.value;
+  //   setLocaliteInput(value);
+  //   const filtered = uniqueLocallist.filter((localite) =>
+  //     localite.toLowerCase().includes(value.toLowerCase())
+  //   );
+  //   setFilteredLocalites(filtered);
+    
+  // };
 
   // Fonction pour sélectionner un métier
   const selectMetier = (metier) => {
@@ -78,9 +103,14 @@ function RecercheAcceuil2({openModal}) {
   };
 
   // Fonction pour sélectionner une localité
+  // const selectLocalite = (localite) => {
+  //   setLocaliteInput(localite);
+  //   setFilteredLocalites([]);
+  // };
+
   const handleFormSubmit = (e) => {
     e.preventDefault(); // Empêche le rechargement de la page
-    
+
     if (metierInput ) {
       const serchData={
         metier:metierInput,
@@ -93,11 +123,14 @@ function RecercheAcceuil2({openModal}) {
       setmessage("Veuillez remplir tous les champs.")
     }
     setMetierInput("")
+    //setLocaliteInput("")
+    //setFilteredLocalites([])
     setFilteredMetiers([])
   };
 
   return (
     <>
+    
         <section className="hero">
             <h1>Retrouvez un artisan Chap Chap</h1>
              <p style={{color:"red"}}> {message} </p>
@@ -120,6 +153,24 @@ function RecercheAcceuil2({openModal}) {
                     </ul>
                 )}
                 </form>
+                {/* <form className="search-input">
+                    <input
+                        type="text"
+                        placeholder="Localité"
+                        value={localiteInput}
+                        onChange={handleLocaliteChange}
+                        required
+                    />
+                {filteredLocalites.length > 0 && (
+                    <ul className="suggestions">
+                        {filteredLocalites.map((localite, index) => (
+                            <li key={index} onClick={() => selectLocalite(localite)}>
+                                {localite}
+                            </li>
+                        ))}
+                    </ul>
+                )}
+                </form> */}
                     <button onClick={handleFormSubmit} disabled={!metierInput }>Valider</button>
                 </div>
         </section>

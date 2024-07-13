@@ -1,51 +1,69 @@
-import React from 'react';
-import './css/card.css';
-import { useState,useEffect } from "react";
-import Axios from '../../service/apiService';
+import React from "react";
+import "./css/card.css";
+import { useState, useEffect } from "react";
+import Axios from "../../service/apiService";
 
-function Card({ backgroundColor, imgSrc,metier, title, originalPrice, discountedPrice }) {
-    const [data,setdata]=useState([])
+function Card({
+  backgroundColor,
+  metier,
+  imgSrc,
+  title,
+  phoneNumber,
+  originalPrice,
+  discountedPrice,
+  id,
+  distance,
+}) {
+  const [data, setdata] = useState([]);
+  console.log("mon image", imgSrc);
+  const domain = "http://localhost:3000/";
 
-    useEffect(()=>{
-        Axios.get("/artisan")
-        .then((response)=>{
-        console.log('mon artisant',response.data.Artisan);
-       setdata(response.data.Artisan)
-       
+  useEffect(() => {
+    Axios.get("/artisan")
+      .then((response) => {
+        console.log("mon artisant", response.data.Artisan);
+        setdata(response.data.Artisan);
       })
-      .catch((error)=>{
-        console.log("mon eereur dans recherche Artisan Api",error);
-      })
-      },[])
-
-      // const filteredArtisans = data.filter((artisan) => {
-      //   const isMetierMatch = metier ? artisan.metier.toLowerCase().includes(metier.toLowerCase()) : true;
-      //   const isLocaliteMatch = comune ? artisan.comune.toLowerCase().includes(comune.toLowerCase()) : true;
-      //   return isMetierMatch && isLocaliteMatch;
-      // });
-
+      .catch((error) => {
+        console.log("mon eereur dans recherche Artisan Api", error);
+      });
+  }, []);
 
   return (
     <>
-    <div className="product-card">
+      <div className="product-card">
         <div className="card-header" style={{ backgroundColor }}>
-            {/* <img src={imgSrc} alt={title} /> */}
-            <button className="add-btn">+</button>
+          {imgSrc && (
+            <img
+              src={domain + imgSrc.replace(/\\/g, "/")}
+              style={{ width: "100%" }}
+              alt={title}
+            />
+          )}
+          <a href={`/profil/${id}`} className="add-btn">
+            i
+          </a>
         </div>
         <div className="card-body">
-            <h3>{title}</h3>
-            <p>Metier:{metier} </p>
-            <div className="price">
-                <span className="original-price">{originalPrice}</span>
-                <span className="discounted-price">{discountedPrice}</span>
-            </div>
-            <button className="cart-btn">Contactez-moi</button>
-            <div className="card-icons">
+          <h3>{title}</h3>
+          <p>
+            {" "}
+            <span style={{ color: "black" }}>Metier</span> : {metier}{" "}
+          </p>
+          <div className="price">
+            <span className="original-price">{originalPrice}</span>
+            <span className="discounted-price">{discountedPrice}</span>
+            <span>{distance}</span>
+          </div>
+          <a href={`tel:${phoneNumber}`} className="cart-btn">
+            Contactez-moi
+          </a>
+          {/* <div className="card-icons">
                 <button className="icon-btn">❤</button>
                 <button className="icon-btn">🗑</button>
-            </div>
+            </div> */}
         </div>
-    </div>
+      </div>
     </>
   );
 }

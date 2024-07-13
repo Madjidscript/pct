@@ -28,7 +28,7 @@
   }
    */
 
-   .card {
+   .cardss {
     max-width: 400px; /* Largeur de la carte */
     height: auto; /* Hauteur automatique en fonction du contenu */
     background-color: white;
@@ -41,11 +41,11 @@
     transform: translate(-50%, -50%); /* Ajustement pour centrer */
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Ombre légère */
 }
-  .card h2{
+  .cardss h2{
     margin-bottom: 10px;
   }
   
-  .card a.fp{
+  .cardss a.fp{
     width: 100%;
     display: flex;
     color: #5881D0;

@@ -145,14 +145,17 @@
   @media (max-width: 520px) {
     .cards{
       width: 100%;
+      /* background-color: red; */
     }
     .inputCard {
       width: 100%;
-        flex-wrap: wrap;
+        /* flex-wrap: wrap; */
+        flex-direction: column;
         
     }
     .inputCard input{
       width: 98%;
+      
     }
    
 }

@@ -1,14 +1,36 @@
 import React from 'react';
-import {  useState} from "react";
-import {  NavLink} from "react-router-dom";
+import {useEffect,useState} from "react";
+import {  NavLink ,useNavigate} from "react-router-dom";
 //import '@fortawesome/fontawesome-free/css/all.css';
+import { LocalService } from "../../service/local";
 import "./css/hearder.css"
 
 
 
-const Hearder2 = (props) => {
-    
 
+const Hearder2 = (props) => {
+
+  const [Nom,setNom]= useState("")
+  const [Id,setid]= useState("")
+
+
+
+  useEffect(() => {
+    const local = JSON.parse(localStorage.getItem("Artisan"));
+    
+    if (local) {
+      console.log("aslam hooo", local.nom,"mon id hoo",local._id);
+      setNom(local.nom);
+      setid(local._id)
+    }
+  }, []);
+  console.log("mon id",Nom,Id)
+
+  const navigate=useNavigate()
+  const deconnexion = () => {
+    LocalService.deconnexion()
+    navigate("/connexion");
+  };
   const [click, setClick] =useState(false);
 
   const handleClick = () => setClick(!click);
@@ -28,7 +50,7 @@ const Hearder2 = (props) => {
             <li className="nav-item">
               <NavLink
                 exact
-                to="/artisan/"
+                to="/artisan"
                 activeClassName="active"
                 className="nav-links"
                 onClick={click ? handleClick : null}
@@ -62,12 +84,12 @@ const Hearder2 = (props) => {
             <li className="nav-item">
               <NavLink
                 exact
-                to="/artisan/profil/:id"
+                to={`/artisan/profil/${Id}`}
                 activeClassName="active"
                 className="nav-links"
                onClick={click ? handleClick : null}
               >
-                Profil
+                Profil:{Nom}
               </NavLink>
             </li>
             <li className="nav-item">
@@ -76,7 +98,8 @@ const Hearder2 = (props) => {
                 to="/artisan/connexion"
                 activeClassName="active"
                 className="nav-links"
-               onClick={click ? handleClick : null}
+               onClick={deconnexion}
+               
               >
                 Deconnexion
               </NavLink>

@@ -1,7 +1,7 @@
 import React from 'react';
 import "./css/inscription.css"
 import { useState,useEffect } from 'react';
-import {  NavLink} from "react-router-dom";
+import {  NavLink,useNavigate} from "react-router-dom";
 import Hearder from "./hearder";
 import Footer from "./footer.jsx"
 import LocalisationMap from './carteLocale';
@@ -10,6 +10,7 @@ const Inscription = (props) => {
     const [longitudes ,setlongitudes]=useState("")
     const [latitudes ,setlatitudes]=useState("")
     const[message,setmessage]=useState(null)
+    const navigate = useNavigate()
     
    
     const [formdata,setformdata]=useState({
@@ -54,6 +55,12 @@ const Inscription = (props) => {
             [e.target.name]:e.target.value
         })
     }
+    const handfilchange = (e)=>{
+        setformdata({
+            ...formdata,
+            image:e.target.files[0]
+        })
+    }
    
     const handlsubmit =(e)=>{
         e.preventDefault()
@@ -70,7 +77,7 @@ const Inscription = (props) => {
         formData.append('ville', formdata.ville);
         formData.append('ouverture', formdata.ouverture);
         formData.append('fermeture', formdata.fermeture);
-        formData.append('image', e.target.image.files[0]); // Assurez-vous que 'image' correspond au nom du champ dans votre backend
+        formData.append('image', formData.image); // Assurez-vous que 'image' correspond au nom du champ dans votre backend
         formData.append('experience', formdata.experience);
         formData.append('metier', formdata.metier);
         formData.append('statut', formdata.statut);
@@ -98,6 +105,10 @@ const Inscription = (props) => {
                      experience:"",
                      metier:""
                     })
+                    setTimeout(() => {
+                    console.log("Fonction exécutée après 3 secondes");
+                    navigate("/admin/connexion");
+                   }, 3000);
 
                 })
                 .catch((Error)=>{
@@ -164,11 +175,11 @@ const Inscription = (props) => {
               <input type="time"  placeholder="entrer l'heure de fermeture " className="email" name='fermeture' value={formdata.fermeture} onChange={handlchange} required />
            </div>
            <div className="inputCard">
-           <input type="file"  placeholder="Entrer votre photo" className="email" name='image' value={formdata.image} required />
+           <input type="file"  placeholder="Entrer votre photo" className="email" name='image'  onChange={handfilchange} required />
               <input type="text"  placeholder="votre année dexperience" className="email" name='experience' value={formdata.experience} onChange={handlchange} required />
            </div>
            <div className="inputCard">
-              <input type="text"  placeholder="votre metier" className="email" name='metier' value={formdata.metier} onChange={handlchange} required />
+              <input type="text"  placeholder="votre metier" className="email" name='metier' value={formdata.metier} required />
            </div>
            <div className="inputCard">
               <input type="hidden"  placeholder="votre statut" className="email" name='statut' value={formdata.statut} onChange={handlchange} required />

@@ -1,5 +1,6 @@
 const { request } = require("express")
 const otherArtisan = require("../other/artisan")
+const otherRealisation = require("../other/realisation")
 const bcrypt =require("bcrypt")
 const path = require("path/win32");
 
@@ -70,6 +71,96 @@ const ControlerUser = class{
       }else{
         message ="recuperation echouer"
         res.json(message)
+      }
+    }
+    static AfficheArtisan2 = async (req=request,res=response)=>{
+      let message =""
+      const metier = req.params.metier;
+      const Artisan  = await otherArtisan.utilisarteuParMetier(metier)
+      if(Artisan){
+        message="recuperation reussit"
+        console.log("ma recuperation",Artisan)
+        res.json({Artisan,message})
+      }else{
+        message ="recuperation echouer"
+        res.json(message)
+      }
+    }
+
+    static AfficheArtisanId = async (req=request,res=response)=>{
+      const id = req.params.id
+      console.log("mon id")
+      let message =""
+      const Artisan  = await otherArtisan.utilisarteuParID(id)
+      if(Artisan){
+        message="recuperation reussit"
+        console.log("ma recuperation",Artisan)
+        res.json({Artisan,message})
+      }else{
+        message ="recuperation echouer"
+        res.json(message)
+      }
+    }
+    static Reclamation1 = async (req=request,res=response)=>{
+      console.log("ma reclamation1",req.body)
+      const nomclient = req.body.nomClient
+      const numclient = req.body.numClient
+      const numArtisan = req.body.numArtisan
+      const nomArtisan = req.body.nomArtisan
+      const ms = req.body.message
+      const message = `nom du client:${nomclient} num du client:${numclient},
+      nom du artisan:${nomArtisan} num du artisan:${numArtisan}
+      reclamation:${ms}`
+      const num =2250546884684
+      console.log("mon message",message)
+      const whatsappLink = `https://api.whatsapp.com/send/?phone=${num}&text=${message}&type=phone_number&app_absent=0`;
+      // const whatsappLink = `https://api.whatsapp.com/send/?phone=2250153535065&text=${message}&type=phone_number&app_absent=0`;
+      console.log("wassapplink",whatsappLink);
+    // Renvoyer le lien WhatsApp
+    return whatsappLink
+    }
+    static Reclamation2 = async (req=request,res=response)=>{
+      console.log("ma reclamation2",req.body)
+     
+      const numArtisan = req.body.numArtisan
+      const nomArtisan = req.body.nomArtisan
+      const ms = req.body.message
+      const message = 
+      `nom du artisan:${nomArtisan} num du artisan:${numArtisan}
+      reclamation:${ms}`
+      console.log("mon message",message)
+    }
+
+    static RealisationArtisan = async (req=request,res=response)=>{
+      let message =""
+      console.log("realisation artisan",req.body,"monimage")
+      const images= req.file.path
+      const data = {
+        ...req.body,
+        image:images
+      }
+      const realisation  = await otherRealisation.inscription(data)
+      console.log("ma realisation",realisation)
+      message="realisation effectuer"
+      res.json({realisation,message})
+    }
+    static modif = async(req=request,res=response)=>{
+      let message=""
+      const id  =req.params.id
+      const passwords = req.body.password
+      const images =req.file.path
+      const hspass = await bcrypt.hash(passwords,10)
+      const data ={
+        ...req.body,
+        password:hspass,
+        image:images
+      }
+      const modifs = await otherArtisan.update(id,data)
+      if(modifs){
+        message='modification effectuer avec succes'
+        res.json({message})
+      }else{
+        message="erreur de modication des donner"
       }
     }
 }

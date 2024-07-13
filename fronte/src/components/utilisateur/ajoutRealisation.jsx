@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
-import "./css/connexion.css";
-import {  NavLink} from "react-router-dom";
 
-
+import React from 'react';
+import "./css/inscription.css"
+import { useState,useEffect } from 'react';
+import {  NavLink,useParams} from "react-router-dom";
+import Axios from '../../service/apiService.jsx';
 const AjoutRealisation = (props) => {
+    
+    const[message,setmessage]=useState(null)
+    const {id}=useParams()
     const [formdata,setformdata]=useState({
         titre:"",
-        image:""
+        image:null
     })
     const handlchange = (e)=>{
         setformdata({
@@ -14,38 +18,65 @@ const AjoutRealisation = (props) => {
             [e.target.name]:e.target.value
         })
     }
+   
     const handlsubmit =(e)=>{
-            e.preventDefault()
-            console.log("les donner du formulaire",formdata)
-            setformdata({
-                titre:"",
-                image:""
-            })
-    }
-    return ( 
-        <>
-        <div className="card">
-        <h2>Ajout Realisation</h2>
-
+        e.preventDefault()
+        console.log("mes donner depuis le fronte",formdata)
+        const formData = new FormData();
+        formData.append('titre', formdata.titre);
+        
+        formData.append('image', e.target.image.files[0]); // Assurez-vous que 'image' correspond au nom du champ dans votre backend
+       
             
+            Axios.post(`/realisation/${id}`,formData)
+                .then((response)=>{
+                  console.log("ma reponse",response)
+                    setformdata({
+                     titre:"",
+                     image:null,
+                    
+                    })
+                    
+
+                })
+                .catch((Error)=>{
+                 console.log("mon erreur au niveau de la requete",Error)
+                })
+                      
+    }
+
+    return ( 
+        
+        <>
+        
+    <div className="cardss">
+        <h2>Ajout realisation</h2>
+
         <div className="login_register">
-            <NavLink to="/artisan/realisation/:id" className="login" >Realisation</NavLink>
-            <NavLink to="/artisan/profil/:id" className="registers"   >Profil</NavLink>
+                    <NavLink to={`/artisan/realisation/${id}`} className="login">Realisation</NavLink>
+                    <NavLink to={`/artisan/profil/${id}`} className="registers">Profil</NavLink>
         </div>
+        
+        
          
-        <form method='POST' className="form" onSubmit={handlsubmit}>
-            <input type="text"  placeholder="Entre le titre de la realisation" className="email" name='titre' value={formdata.titre} onChange={handlchange} required />
-            <input type="file" placeholder="entrer votre image" className="password" name='image' value={formdata.image} onChange={handlchange} required/>
-            <button className="login_btn">Validez</button>
+        <form method='POST' className="form" onSubmit={handlsubmit} enctype="multipart/form-data" >
+           
+              <input type="text"  placeholder="Entre votre nom" className="email" name='titre' value={formdata.titre} onChange={handlchange} required />
+              <input type="file"  placeholder="Entrer votre photo" className="email" name='image' value={formdata.image} required />
+              
+           
+           
+            <button className="login_btn">Ajouter</button>
         </form>
 
         <div className="footer_card">
-        <p>NB: <strong>remplie tout les champs</strong> </p>
-        
+        <p>nb:remplisez tout les champ</p>
         </div>
     </div>
+    
     </>
+    
     );
 };
-    
-export default AjoutRealisation;
+
+export default AjoutRealisation; 

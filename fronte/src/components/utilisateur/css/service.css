@@ -1,0 +1,42 @@
+body{
+    background-color: #fff;
+}
+.boxs{
+    width: 100%;
+    /* height: 300px; */
+    max-height: auto;
+    background-color: white;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px;
+    margin-bottom: 50px;
+}
+.hearder{
+    width: 80%;
+    height:80px;
+    background-color: aqua;
+    margin: 0px auto;
+}
+.cardParent{
+    width: 80%;
+     height:auto;
+   /* max-height: auto; */
+     /* background-color: rgb(148, 14, 81);  */
+    margin: 10px ;
+    z-index:999;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin:0px auto;
+}
+.card1{
+    width: 300px;
+    max-width: 90%;
+    height: 300px;
+    max-height: auto;
+    background: linear-gradient(to right,#FF4E00,#FF9600);
+    border-bottom-left-radius: 30%;
+    margin-bottom: 10px;
+}

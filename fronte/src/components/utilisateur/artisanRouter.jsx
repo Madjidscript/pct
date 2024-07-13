@@ -14,10 +14,10 @@ const ArtisanRouter = (props) => {
             <Routes>
                 <Route path='abonnement' element= {<Abonnement/>} />
                 <Route index element= {<Acceuil/>} />
-                <Route path='realisation/:id' element= {<AjoutRealisation/>} />
+                <Route path='/realisation/:id' element= {<AjoutRealisation/>} />
                 <Route path='contact' element= {<Contact2/>} />
                 <Route path='profil/:id' element= {<Profil/>} />
-                <Route path='edit/:id' element= {<Edit/>}/>
+                <Route path='/edit/:id' element= {<Edit/>}/>
                 <Route path='*' element= {<Error/>} />
             </Routes>
 

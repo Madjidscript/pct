@@ -1,10 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./css/connexion.css";
-import {  NavLink} from "react-router-dom";
+import {  NavLink,useNavigate} from "react-router-dom";
 import Axios from '../../service/apiService';
+import { LocalService } from "../../service/local";
 
 
 const Connexion = (props) => {
+    const navigate = useNavigate()
+
+    useEffect(()=>{
+        if (LocalService.local()) {
+            console.log("veriffffff")
+            return navigate("/artisan")
+
+        }
+    })
     const [formdata,setformdata]=useState({
         email:"",
         password:""
@@ -22,6 +32,19 @@ const Connexion = (props) => {
             Axios.post("/connexion",formdata)
             .then((response)=>{
                 console.log("m a reponse lors de la connexion",response.data.message,"mon objet",response.data.data._doc)
+                const info =response.data.data._doc
+                console.log("mon info", info);
+                if (info && info !== undefined) {
+                    const donner = JSON.stringify(response.data.data._doc)
+                    LocalService.savelocal(donner)
+                    setTimeout(() => {
+                        console.log("Fonction exécutée après 3 secondes");
+                        navigate("/artisan");
+                    }, 3000);
+                    
+                } else {
+                    navigate("/connexion")
+                }
             })
             .catch((Error)=>{
                 console.log('mon error durant la connexion',Error)
@@ -33,7 +56,7 @@ const Connexion = (props) => {
     }
     return ( 
         <>
-        <div className="card">
+        <div className="cardss">
         <h2>Conexion</h2>
 
             
@@ -53,6 +76,8 @@ const Connexion = (props) => {
         <NavLink to="/inscription">S'inscrire</NavLink>
         </div>
     </div>
+
+
     </>
     );
 };
