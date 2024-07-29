@@ -1,9 +1,9 @@
-const Artisan = require("../model/artisan")
+const Reclamation2 = require("../model/reclamation2")
 
-const otherArtisan = class {
+const otherReclamation2 = class {
 static afficheTout = async()=>{
   try {
-    const affiche = await Artisan.find()
+    const affiche = await Reclamation2.find()
     return affiche
   } catch (error) {
   console.log("mon erreur",error);  
@@ -12,7 +12,7 @@ static afficheTout = async()=>{
 
 static utilisarteuParID = async(id)=>{
     try {
-        const recupParId = await Artisan.findById(id)
+        const recupParId = await Reclamation2.findById(id)
          return recupParId
     } catch (error) {
         console.log("mon erreur",error);
@@ -20,7 +20,7 @@ static utilisarteuParID = async(id)=>{
 }
 static utilisarteuParMetier = async(metier)=>{
     try {
-        const recupParId = await Artisan.find({metier:metier}).exec()
+        const recupParId = await Reclamation2.find({metier:metier}).exec()
          return recupParId
     } catch (error) {
         console.log("mon erreur",error);
@@ -29,7 +29,7 @@ static utilisarteuParMetier = async(metier)=>{
 
 static utilisateurParEmail = async(email)=>{
     try {
-        const recupParEmail = await Artisan.findOne({email:email})
+        const recupParEmail = await Reclamation2.findOne({email:email})
         return recupParEmail
     } catch (error) {
         console.log("mon erreur",error);
@@ -38,7 +38,7 @@ static utilisateurParEmail = async(email)=>{
 
 static inscription = async(utilisateur)=>{
     try {
-        const inscription  = await Artisan.insertMany(utilisateur)
+        const inscription  = await Reclamation2.insertMany(utilisateur)
         return inscription
     } catch (error) {
         console.log('mon erreur',error);
@@ -47,22 +47,19 @@ static inscription = async(utilisateur)=>{
 
 static suppression = async(id)=>{
     try {
-        const supp = await Artisan.findByIdAndDelete(id)
+        const supp = await Reclamation2.findByIdAndDelete(id)
         return supp
     } catch (error) {
         console.log("mon erreur",error);
     }
 }
-
-static update = async (id, data) => {
+static update= async(id,data)=>{
     try {
-        const modif = await Artisan.findByIdAndUpdate(id, data);
-        console.log("mon datadepuis other",data)
-        return modif; // Renvoie les données mises à jour
+        const modif = await Reclamation2.findByIdAndUpdate(id,data)
+        return modif
     } catch (error) {
-        console.error("Erreur dans otherArtisan.update :", error);
-        throw error; // Rejette l'erreur pour la gestion dans le fichier appelant
+        console.log("mon erreur hoo",error);
     }
 }
 }
-module.exports= otherArtisan
+module.exports= otherReclamation2

@@ -4,12 +4,15 @@ import { useState,useEffect} from 'react';
 import "./css/contact.css"
 import Hearder2 from "./hearder2";
 import Footer from "./footer.jsx"
+import { toast,Toaster } from 'react-hot-toast';
+
+
 import Axios from '../../service/apiService.jsx';
 
 const Contact2 = (props) => {
    
     
-   
+    
     const [formdata,setformdata]=useState({
         nomArtisan:"",
         numArtisan:"",
@@ -30,10 +33,30 @@ const Contact2 = (props) => {
             Axios.post("/reclamation2",formdata)
             .then((response)=>{
                console.log("ma reponse de la reclamation 1", response);
+               if (response.status === 200) {
+                toast.success('Réclamation effectuée avec succès !', {
+                    position: 'top-right',
+                    duration: 4000,
+                    style: {
+                        background: '#4caf50',
+                        color: '#ffffff',
+                    }
+                });
+            }
             })
             .catch((error)=>{
               console.log("mon erreur pour la reclamation",error)
-            })
+              toast.error('Erreur lors de la réclamation !', {
+                position: 'top-right',
+                duration: 4000,
+                style: {
+                    background: '#f44336',
+                    color: '#ffffff',
+                }
+            });
+        });
+              
+            
             setformdata({
                 nomArtisan:"",
                 numArtisan:"",
@@ -45,6 +68,7 @@ const Contact2 = (props) => {
     return ( 
         
         <>
+         <Toaster />
         <div>
         <Hearder2/>
         </div>
@@ -55,7 +79,7 @@ const Contact2 = (props) => {
         
 
 
-
+        
         <div className="cards"style={{marginTop:"100px"}}>
         <h2>Reclamation Artisan</h2>
 

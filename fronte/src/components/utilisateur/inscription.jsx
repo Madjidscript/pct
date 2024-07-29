@@ -6,13 +6,99 @@ import Hearder from "./hearder";
 import Footer from "./footer.jsx"
 import LocalisationMap from './carteLocale';
 import Axios from '../../service/apiService.jsx';
+import { toast,Toaster } from 'react-hot-toast';
 const Inscription = (props) => {
     const [longitudes ,setlongitudes]=useState("")
     const [latitudes ,setlatitudes]=useState("")
     const[message,setmessage]=useState(null)
     const navigate = useNavigate()
     
-   
+    const metiersArtisanat = [
+        "Menuisier",
+        "Charpentier",
+        "Ferronnier",
+        "Céramiste",
+        "Tailleur de pierre",
+        "Ebéniste",
+        "Potier",
+        "Joaillier",
+        "Tapissier",
+        "Vitrailliste",
+        "Maroquinier",
+        "Verrier",
+        "Horloger",
+        "Chocolatier",
+        "Boulanger",
+        "Pâtissier",
+        "Glacier",
+        "Maître d'art",
+        "Maquettiste",
+        "Restaurateur d'œuvres d'art",
+        "Sculpteur",
+        "Forgeron",
+        "Sellier",
+        "Relieur",
+        "Luthier",
+        "Facteur d'instruments de musique",
+        "Modiste",
+        "Gainier",
+        "Brodeur",
+        "Doreur",
+        "Encadreur",
+        "Serrurier",
+        "Cordonnier",
+        "Tapissier-décorateur",
+        "Faïencier",
+        "Métallier",
+        "Bijoutier",
+        "Bottier",
+        "Coutelier",
+        "Cuirassier",
+        "Emailler",
+        "Lapidairier",
+        "Marqueteur",
+        "Parcheminier",
+        "Sculpteur sur bois",
+        "Sérigraphe",
+        "Teinturier",
+        "Tourneur sur bois",
+        "Vannier",
+        "Zingueur",
+        "Aquarelliste",
+        "Graveur",
+        "Vitrier",
+        "Tapissier garnisseur",
+        "Facteur de clavecins",
+        "Facteur d'orgues",
+        "Restaurateur de meubles",
+        "Facteur de papier peint",
+        "Restaurateur de tableaux",
+        "Facteur de jouets",
+        "Facteur de poupées",
+        "Facteur d'automates",
+        "Cristallier",
+        "Laqueur",
+        "Imprimeur d'art",
+        "Tatoueur",
+        "Tailleur de pierre précieuse",
+        "Malletier",
+        "Tapissier matelassier",
+        "Polisseur",
+        "Métiers du cuir",
+        "Métiers de la bijouterie-joaillerie",
+        "Métiers du textile",
+        "Métiers du bois",
+        "Métiers du métal",
+        "Métiers de la céramique",
+        "Métiers du verre",
+        "Métiers de l'horlogerie",
+        "Métiers de la restauration d'œuvres d'art"
+        // Ajoutez d'autres métiers d'artisanat selon vos besoins
+    ];
+    
+    // Exemple d'utilisation
+    console.log(metiersArtisanat);
+    
     const [formdata,setformdata]=useState({
         nom:"",
         entreprise:"",
@@ -77,7 +163,7 @@ const Inscription = (props) => {
         formData.append('ville', formdata.ville);
         formData.append('ouverture', formdata.ouverture);
         formData.append('fermeture', formdata.fermeture);
-        formData.append('image', formData.image); // Assurez-vous que 'image' correspond au nom du champ dans votre backend
+        formData.append('image',  e.target.image.files[0]); // Assurez-vous que 'image' correspond au nom du champ dans votre backend
         formData.append('experience', formdata.experience);
         formData.append('metier', formdata.metier);
         formData.append('statut', formdata.statut);
@@ -87,6 +173,16 @@ const Inscription = (props) => {
                 .then((response)=>{
                   console.log("ma reponse",response)
                    setmessage(response.data)
+                   if (response.status === 200) {
+                    toast.success('inscription effectuée avec succès !', {
+                        position: 'top-right',
+                        duration: 2000,
+                        style: {
+                            background: '#4caf50',
+                            color: '#ffffff',
+                        }
+                    });
+                }
 
                     setformdata({
                      nom:"",
@@ -105,14 +201,26 @@ const Inscription = (props) => {
                      experience:"",
                      metier:""
                     })
+                    
+                    
                     setTimeout(() => {
                     console.log("Fonction exécutée après 3 secondes");
-                    navigate("/admin/connexion");
-                   }, 3000);
+                    navigate("/connexion");
+                   }, 2000);
 
                 })
                 .catch((Error)=>{
                  console.log("mon erreur au niveau de la requete",Error)
+                 
+                    toast.error('inscription echouer !', {
+                        position: 'top-right',
+                        duration: 2000,
+                        style: {
+                            background: '#f44336',
+                            color: '#ffffff',
+                        }
+                    });
+                
                 })
             
            
@@ -125,6 +233,7 @@ const Inscription = (props) => {
     return ( 
         
         <>
+        <Toaster/>
         <div>
         <Hearder/>
         </div>
@@ -175,11 +284,26 @@ const Inscription = (props) => {
               <input type="time"  placeholder="entrer l'heure de fermeture " className="email" name='fermeture' value={formdata.fermeture} onChange={handlchange} required />
            </div>
            <div className="inputCard">
-           <input type="file"  placeholder="Entrer votre photo" className="email" name='image'  onChange={handfilchange} required />
+           <input type="file"  placeholder="Entrer votre photo" className="email" name='image'   onChange={handfilchange} required />
               <input type="text"  placeholder="votre année dexperience" className="email" name='experience' value={formdata.experience} onChange={handlchange} required />
            </div>
            <div className="inputCard">
-              <input type="text"  placeholder="votre metier" className="email" name='metier' value={formdata.metier} required />
+           <label htmlFor="metier">Métier :</label>
+                    <select
+                        id="metier"
+                        name="metier"
+                        value={formdata.metier}
+                        onChange={handlchange}
+                        required
+                    >
+                        <option value="">Sélectionnez un métier</option>
+                        {metiersArtisanat.map((metier, index) => (
+                            <option key={index} value={metier}>
+                                {metier}
+                            </option>
+                        ))}
+                    </select>
+              {/* <input type="text"  placeholder="votre metier" className="email" name='metier' value={formdata.metier} onChange={handlchange} required /> */}
            </div>
            <div className="inputCard">
               <input type="hidden"  placeholder="votre statut" className="email" name='statut' value={formdata.statut} onChange={handlchange} required />
@@ -192,7 +316,7 @@ const Inscription = (props) => {
 
         <div className="footer_card">
         <p>deja menbres?</p>
-        <NavLink to="/connexion">se connecter</NavLink>
+        <NavLink className="logins" to="/connexion">se connecter</NavLink>
         </div>
     </div>
     <Footer/>

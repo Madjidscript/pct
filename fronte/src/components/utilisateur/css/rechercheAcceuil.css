@@ -2,6 +2,7 @@
 .hero {
   width: 100%;
     background-image: url('../../../assets/imageArti.jpg');
+    height:400px;
     background-size: cover;
     background-position: center;
     text-align: center;

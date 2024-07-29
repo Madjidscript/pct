@@ -5,6 +5,9 @@
     font-family: "Poppins", sans-serif;
     text-decoration: none;
   }
+  a{
+    text-decoration: none;
+  }
   
   /* body{
     background-color: #28362a;
@@ -125,7 +128,13 @@
     width: 100%;
     justify-content: center;
   }
-  
+  .logins {
+    text-decoration: none;
+  }
+  .register{
+    text-decoration: none;
+  }
+  /* AdInscription */
   .footer_card p{
     margin-right: 10px;
   }
@@ -177,4 +186,19 @@
       margin-bottom: 10px; /* Espacement entre les inputs lorsqu'ils sont en colonne */
   }
 }
+.content {
+  display: flex;
+  align-items: center;  /* Centre verticalement */
+  justify-content: center;  /* Centre horizontalement */
+  height: 100vh;  /* Hauteur de la fenêtre */
+  background-color: #f0f0f0;  /* Optionnel, juste pour visualiser le conteneur */
+}
 
+.centrer {
+  width: 50%;
+  height: auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Optionnel, ajoute une ombre légère */
+}

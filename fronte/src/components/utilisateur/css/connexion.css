@@ -29,7 +29,8 @@
    */
 
    .cardss {
-    max-width: 400px; /* Largeur de la carte */
+    max-width:60%;
+    min-width: 400px; /* Largeur de la carte */
     height: auto; /* Hauteur automatique en fonction du contenu */
     background-color: white;
     margin-top: auto;
@@ -128,3 +129,10 @@
   .footer_card a{
     color: #5881D0;
   }
+  .login {
+    text-decoration: none;
+  }
+  .registers{
+    text-decoration: none;
+  }
+  

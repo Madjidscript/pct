@@ -20,7 +20,7 @@
 
     position: absolute;
     border-radius: 50%;
-    border: 5px solid red;
+    border: 5px solid #FF4E00;
     border-bottom: 5px solid transparent;
     aspect-ratio: 1;
     animation: load 4s ease-in-out infinite;

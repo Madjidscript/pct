@@ -41,20 +41,21 @@ function Card({
             />
           )}
           <a href={`/profil/${id}`} className="add-btn">
-            i
+            i 
           </a>
         </div>
         <div className="card-body">
           <h3>{title}</h3>
           <p>
             {" "}
-            <span style={{ color: "black" }}>Metier</span> : {metier}{" "}
+            <span style={{ color: "white" }}>Metier</span> : <span className="discounted-price" >{metier}{" "}</span>
           </p>
           <div className="price">
             <span className="original-price">{originalPrice}</span>
             <span className="discounted-price">{discountedPrice}</span>
-            <span>{distance}</span>
+           
           </div>
+          <p><span>Distance</span> <span className="discounted-price">{distance}</span></p>
           <a href={`tel:${phoneNumber}`} className="cart-btn">
             Contactez-moi
           </a>

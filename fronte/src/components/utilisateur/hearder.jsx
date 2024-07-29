@@ -3,6 +3,7 @@ import {  useState} from "react";
 import {  NavLink} from "react-router-dom";
 //import '@fortawesome/fontawesome-free/css/all.css';
 import "./css/hearder.css"
+import Logo from "../../assets/logo.svg"
 
 
 
@@ -21,7 +22,9 @@ const Hearder = (props) => {
       <nav className="navbar" onClick={e => e.stopPropagation()}>
         <div className="nav-container">
           <NavLink exact to="/" className="nav-logo">
-            E-artisan
+         
+          <span> <img src={Logo} alt="" className='logo'/> </span>
+            
            
           </NavLink>
           <ul className={click ? "nav-menu active" : "nav-menu"}>

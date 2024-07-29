@@ -6,6 +6,7 @@ import "./css/profil.css"
 import Axios from '../../service/apiService';
 export default function Profil() {
    const [data,setdata]=useState()
+   const [data2,setdata2]=useState()
    const domain ="http://localhost:3000/"
   const {id}= useParams()
   console.log("mon id",id);
@@ -19,7 +20,18 @@ export default function Profil() {
       console.log("mon ereur",error);
     })
 
+
+    Axios.get(`/realisation/${id}`)
+    .then((response)=>{
+      console.log('ma reponse pour la realisation',response.data.recup,"limage heee",response.data.recup[0].image);
+      setdata2(response.data.recup)
+    })
+    .catch((error)=>{
+      console.log("mon ereur",error);
+    })
+    
   },[id])
+  
   return (
     
       <MDBContainer className="py-5 h-100">
@@ -104,26 +116,18 @@ export default function Profil() {
                   <MDBCardText className="lead fw-normal mb-0">Galerie</MDBCardText>
                   {/* <MDBCardText className="mb-0"><a href="realisation/:id" className="text-muted">ajouter realisation</a></MDBCardText> */}
                 </div>
-                <MDBRow>
-                  <MDBCol className="mb-2">
-                    <MDBCardImage src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
-                      alt="image 1" className="w-100 rounded-3" />
-                  </MDBCol>
-                  <MDBCol className="mb-2">
-                    <MDBCardImage src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
-                      alt="image 1" className="w-100 rounded-3" />
-                  </MDBCol>
-                </MDBRow>
-                <MDBRow className="g-2">
-                  <MDBCol className="mb-2">
-                    <MDBCardImage src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp"
-                      alt="image 1" className="w-100 rounded-3" />
-                  </MDBCol>
-                  <MDBCol className="mb-2">
-                    <MDBCardImage src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp"
-                      alt="image 1" className="w-100 rounded-3" />
-                  </MDBCol>
-                </MDBRow>
+               
+                <div className="image-container">
+                    {data2 && data2.map((element, index) => (
+                   <div key={index} className="image-item">
+                     
+                    <img
+                    src={domain + element.image.replace(/\\/g, '/')}
+                    alt={`Image ${index + 1}`}  
+                 />
+               </div>
+  ))}
+</div>
               </MDBCardBody>
             </MDBCard>
           </MDBCol>

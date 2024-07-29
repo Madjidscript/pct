@@ -3,7 +3,9 @@ const otherArtisan = require("../other/artisan")
 const otherRealisation = require("../other/realisation")
 const bcrypt =require("bcrypt")
 const path = require("path/win32");
-
+const otherReclamation1 = require("../other/reclamation1");
+const otherReclamation2 = require("../other/reclamation2");
+const multer = require("../middlewares/multer")
 
 const ControlerUser = class{
     static Inscription = async(req=request,res=response)=>{
@@ -108,16 +110,15 @@ const ControlerUser = class{
       const numArtisan = req.body.numArtisan
       const nomArtisan = req.body.nomArtisan
       const ms = req.body.message
-      const message = `nom du client:${nomclient} num du client:${numclient},
-      nom du artisan:${nomArtisan} num du artisan:${numArtisan}
-      reclamation:${ms}`
-      const num =2250546884684
-      console.log("mon message",message)
-      const whatsappLink = `https://api.whatsapp.com/send/?phone=${num}&text=${message}&type=phone_number&app_absent=0`;
-      // const whatsappLink = `https://api.whatsapp.com/send/?phone=2250153535065&text=${message}&type=phone_number&app_absent=0`;
-      console.log("wassapplink",whatsappLink);
-    // Renvoyer le lien WhatsApp
-    return whatsappLink
+      let message="reclamation efectuer avac succés"
+      const envoi = otherReclamation1.inscription(req.body)
+      if (envoi) {
+        res.json({message})
+      }else{
+        message="reclamation echouer"
+        res.json({message})
+      }
+      
     }
     static Reclamation2 = async (req=request,res=response)=>{
       console.log("ma reclamation2",req.body)
@@ -125,43 +126,142 @@ const ControlerUser = class{
       const numArtisan = req.body.numArtisan
       const nomArtisan = req.body.nomArtisan
       const ms = req.body.message
-      const message = 
-      `nom du artisan:${nomArtisan} num du artisan:${numArtisan}
-      reclamation:${ms}`
-      console.log("mon message",message)
+
+      let message="reclamation efectuer avac succés"
+      const envoi = otherReclamation2.inscription(req.body)
+      if (envoi) {
+        res.json({message})
+      }else{
+        message="reclamation echouer"
+        res.json({message})
+      }
+      
+      
     }
 
     static RealisationArtisan = async (req=request,res=response)=>{
       let message =""
+      const id = req.params.id
       console.log("realisation artisan",req.body,"monimage")
       const images= req.file.path
       const data = {
         ...req.body,
-        image:images
+        image:images,
+        id_cath:id
+        
       }
       const realisation  = await otherRealisation.inscription(data)
       console.log("ma realisation",realisation)
       message="realisation effectuer"
       res.json({realisation,message})
     }
-    static modif = async(req=request,res=response)=>{
+    static getRealisaton= async (req=request,res=response)=>{
+       const id = req.params.id
+       let message=""
+       const recup = await otherRealisation.afficheTout2(id)
+       console.log("mais different realisation",recup);
+       if(recup){
+        message="recuperation effectuer avec succes";
+        console.log("ma recuperation de reilsation",recup,"mon message",message)
+        res.json({recup,message})
+       }else{
+            message = "recuperation echouer"
+            res.json({message})
+       }
+    }
+    
+
+    static supp = async (req=request,res=response)=>{
       let message=""
-      const id  =req.params.id
-      const passwords = req.body.password
-      const images =req.file.path
-      const hspass = await bcrypt.hash(passwords,10)
-      const data ={
-        ...req.body,
-        password:hspass,
-        image:images
-      }
-      const modifs = await otherArtisan.update(id,data)
-      if(modifs){
-        message='modification effectuer avec succes'
+      const id =req.params.id
+      // const image =await otherRealisation.afficheTout2(id)
+      // console.log("imformation de l'image",image)
+      // const ids = image.id
+      // console.log("mon id serein",ids);
+      const supprimer= await otherRealisation.suppression(id)
+      if(supprimer){
+        message="suppression de realisation valider"
         res.json({message})
       }else{
-        message="erreur de modication des donner"
+        message="suppresion d'image echouer"
+        res.json({message})
       }
     }
-}
+    static edditer = async(req=request,res=response)=>{
+    //   const id = req.params.id;
+    //   console.log("mon id",id,"mon body",req.body)
+    //    const passwords = req.body.password;
+    //     const images = req.file.path;
+
+        
+    //     const hspass = await bcrypt.hash(passwords, 10);
+
+       
+    //     const data = {
+    //         ...req.body,
+    //       image:req.file.path,
+    //       password:hspass
+
+    //     }
+            
+
+       
+    //     const modif = await otherArtisan.update(id, data);
+
+    //     if (modif) {
+            
+    //         const message = 'Modification effectuée avec succès';
+    //         res.json({ message });
+    //     } else {
+           
+    //         const message = "Erreur de modification des données";
+    //         res.status(400).json({ message });
+    //     }
+    // } 
+
+
+    const id = req.params.id;
+    console.log("mon id", id, "mon body", req.body);
+
+    try {
+        // Récupérer l'artisan existant depuis la base de données
+        const artisan = await otherArtisan.utilisarteuParID(id);
+
+        if (!artisan) {
+            return res.status(404).json({ message: "Artisan non trouvé" });
+        }
+
+        // Vérifier si le champ 'password' est modifié
+        let passwords = req.body.password;
+        let hspass = artisan.password; // Utiliser le mot de passe existant par défaut
+
+        if (passwords && passwords !== artisan.password) {
+            // Recrypter le nouveau mot de passe s'il est modifié
+            hspass = await bcrypt.hash(passwords, 10);
+        }
+
+        // Construire les données à mettre à jour
+        const data = {
+            ...req.body,
+            image: req.file ? req.file.path : artisan.image, // Utiliser la nouvelle image ou l'image existante
+            password: hspass, // Utiliser le mot de passe recrypté ou existant
+        };
+
+        // Effectuer la mise à jour
+        const modif = await otherArtisan.update(id, data);
+
+        if (modif) {
+            const message = 'Modification effectuée avec succès';
+            res.json({ message });
+        } else {
+            const message = "Erreur de modification des données";
+            res.status(400).json({ message });
+        }
+    } catch (error) {
+        console.error("Erreur lors de la modification", error);
+        res.status(500).json({ message: "Erreur interne du serveur" });
+    }
+    }
+   }
+
 module.exports =ControlerUser

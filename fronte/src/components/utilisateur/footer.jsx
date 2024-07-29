@@ -13,11 +13,11 @@ const Footer = (props) => {
           <span className="logo_name">E-artisans</span>
         </div>
         <div className="media-icons">
-          <a href="#"><i className="fab fa-facebook-f"></i></a>
-          <a href="#"><i className="fab fa-twitter"></i></a>
-          <a href="#"><i className="fab fa-instagram"></i></a>
-          <a href="#"><i className="fab fa-linkedin-in"></i></a>
-          <a href="#"><i className="fab fa-youtube"></i></a>
+          <a href="https://www.facebook.com/profile.php?id=61561429833836"><i className="fab fa-facebook-f"></i></a>
+          {/* <a href="#"><i className="fab fa-twitter"></i></a> */}
+          <a href=" https://www.instagram.com/e_artisant2024"><i className="fab fa-instagram"></i></a>
+          <a href="www.linkedin.com/in/e-artisans-18259031a"><i className="fab fa-linkedin-in"></i></a>
+          <a href="https://youtube.com/@grptutoratuvci2024?si=Ku-T2CAUZMIP25fr"><i className="fab fa-youtube"></i></a>
         </div>
       </div>
       <div className="link-boxes">

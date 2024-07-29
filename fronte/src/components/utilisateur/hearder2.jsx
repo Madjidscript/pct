@@ -4,6 +4,7 @@ import {  NavLink ,useNavigate} from "react-router-dom";
 //import '@fortawesome/fontawesome-free/css/all.css';
 import { LocalService } from "../../service/local";
 import "./css/hearder.css"
+import Logo from "../../assets/logo.svg"
 
 
 
@@ -29,7 +30,7 @@ const Hearder2 = (props) => {
   const navigate=useNavigate()
   const deconnexion = () => {
     LocalService.deconnexion()
-    navigate("/connexion");
+    navigate("/");
   };
   const [click, setClick] =useState(false);
 
@@ -43,8 +44,9 @@ const Hearder2 = (props) => {
       <nav className="navbar" onClick={e => e.stopPropagation()}>
         <div className="nav-container">
           <NavLink exact to="/" className="nav-logo">
-          E-artisan
-            <i className="fa fa-code"></i>
+          
+          <span><img src={Logo} alt="" className='logo'/></span>
+            
           </NavLink>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">

@@ -3,7 +3,7 @@ import "./css/connexion.css";
 import {  NavLink,useNavigate} from "react-router-dom";
 import Axios from '../../service/apiService';
 import { LocalService } from "../../service/local";
-
+import { toast,Toaster } from 'react-hot-toast';
 
 const Connexion = (props) => {
     const navigate = useNavigate()
@@ -32,14 +32,26 @@ const Connexion = (props) => {
             Axios.post("/connexion",formdata)
             .then((response)=>{
                 console.log("m a reponse lors de la connexion",response.data.message,"mon objet",response.data.data._doc)
+                if (response.status === 200) {
+                    toast.success('connexion effectuée avec succès !', {
+                        position: 'top-right',
+                        duration: 3000,
+                        style: {
+                            background: '#4caf50',
+                            color: '#ffffff',
+                        }
+                    });
+                }
                 const info =response.data.data._doc
+                const ids = info._id
                 console.log("mon info", info);
                 if (info && info !== undefined) {
                     const donner = JSON.stringify(response.data.data._doc)
+                    console.log("mes doner lor de la connexion",info,"monid depuis la connexion",ids)
                     LocalService.savelocal(donner)
                     setTimeout(() => {
                         console.log("Fonction exécutée après 3 secondes");
-                        navigate("/artisan");
+                        navigate(`/artisan/profil/${ids}`);
                     }, 3000);
                     
                 } else {
@@ -48,6 +60,15 @@ const Connexion = (props) => {
             })
             .catch((Error)=>{
                 console.log('mon error durant la connexion',Error)
+                toast.error('connexion echouer !', {
+                    position: 'top-right',
+                    duration: 3000,
+                    style: {
+                        background: '#f44336',
+                        color: '#ffffff',
+                    }
+                });
+            
             })
             setformdata({
                 email:"",
@@ -56,6 +77,7 @@ const Connexion = (props) => {
     }
     return ( 
         <>
+        <Toaster/>
         <div className="cardss">
         <h2>Conexion</h2>
 
@@ -73,7 +95,7 @@ const Connexion = (props) => {
 
         <div className="footer_card">
         <p>pas menbre?</p>
-        <NavLink to="/inscription">S'inscrire</NavLink>
+        <NavLink className="login" to="/inscription">S'inscrire</NavLink>
         </div>
     </div>
 

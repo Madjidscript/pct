@@ -5,7 +5,7 @@ import "./css/contact.css"
 import Hearder from "./hearder";
 import Footer from "./footer.jsx"
 import Axios from '../../service/apiService.jsx';
-
+import { toast,Toaster } from 'react-hot-toast';
 const Contact = (props) => {
    
     
@@ -32,9 +32,29 @@ const Contact = (props) => {
             Axios.post("/reclamation1",formdata)
             .then((response)=>{
                console.log("ma reponse de la reclamation 1", response);
+               if (response.status === 200) {
+                toast.success('Réclamation effectuée avec succès !', {
+                    position: 'top-right',
+                    duration: 4000,
+                    style: {
+                        background: '#4caf50',
+                        color: '#ffffff',
+                    }
+                });
+            }
+
+              
             })
             .catch((error)=>{
               console.log("mon erreur pour la reclamation",error)
+              toast.error('Erreur lors de la réclamation !', {
+                position: 'top-right',
+                duration: 4000,
+                style: {
+                    background: '#f44336',
+                    color: '#ffffff',
+                }
+            });
             })
 
             setformdata({
@@ -46,10 +66,13 @@ const Contact = (props) => {
                 
                 
             })
+
+
     }
     return ( 
         
         <>
+        <Toaster />
         <div>
         <Hearder/>
         </div>

@@ -64,6 +64,13 @@
     margin-bottom: 20px;
     color: white;
   }
+  .voir{
+    
+    color:black;
+  }
+  .voir:hover{
+    display:block;
+  }
   
   .price {
     margin-bottom: 20px;

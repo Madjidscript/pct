@@ -10,6 +10,15 @@ static afficheTout = async()=>{
   }
 }
 
+static afficheTout2 = async(id)=>{
+    try {
+      const affiche = await Realisation.find({id_cath:id}).populate('id_cath')
+      return affiche
+    } catch (error) {
+    console.log("mon erreur",error);  
+    }
+}
+
 static utilisarteuParID = async(id)=>{
     try {
         const recupParId = await Realisation.findById(id)

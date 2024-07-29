@@ -4,3 +4,60 @@
 /* .pp{
 color: black;
 } */
+
+
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.image-item {
+  position: relative;
+  flex: 0 0 calc(50% - 10px); /* 2 images par ligne, ajustable */
+  margin-bottom: 20px;
+}
+.image-item img {
+  width: 100%;
+  height: 200px;
+  display: block;
+  border-radius: 8px;
+}
+.image-item .button-top {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 10;
+  background-color: transparent;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.delete-icon {
+  color: red; /* Couleur rouge pour l'icône */
+  cursor: pointer; /* Curseur indiquant que l'icône est cliquable */
+  margin-left: 5px; /* Espacement à gauche de l'icône */
+}
+a{
+  text-decoration: none;
+}
+.rounded-top{
+  background: linear-gradient(to right,#FF4E00,#FF9600);
+  height:230px;
+  
+  color:white;
+}
+.text-muted{
+  color:black;
+  margin-left:3px;
+  font-weight:bold;
+}
+.dd{
+  margin-top:50px;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+}
