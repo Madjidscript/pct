@@ -17,7 +17,7 @@ const AdminRouter = (props) => {
             {/* <Route index element={<Connexion/>} ></Route>
             <Route path='/connexion' element={<Connexion/>} ></Route> */}
             <Route path='/inscription' element={<Inscription/>}></Route>
-            <Route path='/edit' element={<Edit/>}></Route>
+            <Route path='/edit/:id' element={<Edit/>}></Route>
             <Route path='/galeriepub' element={<Galerie/>}></Route>
             <Route path='/liste' element={<ListeArtisan/>}></Route>
             <Route path='/publiciter' element={<Publicite/>}></Route>

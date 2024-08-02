@@ -218,38 +218,7 @@ const ControlerUser = class{
       }
     }
     static edditer = async(req=request,res=response)=>{
-    //   const id = req.params.id;
-    //   console.log("mon id",id,"mon body",req.body)
-    //    const passwords = req.body.password;
-    //     const images = req.file.path;
-
-        
-    //     const hspass = await bcrypt.hash(passwords, 10);
-
-       
-    //     const data = {
-    //         ...req.body,
-    //       image:req.file.path,
-    //       password:hspass
-
-    //     }
-            
-
-       
-    //     const modif = await otherArtisan.update(id, data);
-
-    //     if (modif) {
-            
-    //         const message = 'Modification effectuée avec succès';
-    //         res.json({ message });
-    //     } else {
-           
-    //         const message = "Erreur de modification des données";
-    //         res.status(400).json({ message });
-    //     }
-    // } 
-
-
+    
     const id = req.params.id;
     console.log("mon id", id, "mon body", req.body);
 

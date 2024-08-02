@@ -1,14 +1,15 @@
 import React from 'react';
 import "../utilisateur/css/inscription2.css"
 import { useState,useEffect } from 'react';
-import {  NavLink,useNavigate} from "react-router-dom";
+import {  NavLink,useNavigate, useParams} from "react-router-dom";
 import Axios from '../../service/apiService.jsx';
 import { toast,Toaster } from 'react-hot-toast';
 import Seidbar from "./seidbar.jsx"
 const AdEdit = (props) => {
    
     const[message,setmessage]=useState(null)
-    
+    const [data,setdata]=useState()
+    const {id}= useParams()
     
    
    
@@ -19,6 +20,26 @@ const AdEdit = (props) => {
         password:"",
         image:null,
     })
+
+    useEffect(() => {
+        Axios.get(`/admin/adminid/${id}`)
+            .then((response) => {
+                console.log("ma reponse", response.data.Admin);
+                const adminData = response.data.Admin;
+                setdata(adminData);
+                setformdata({
+                    nom: adminData.nom,
+                    email: adminData.email,
+                    password: adminData.password,
+                   
+                });
+            })
+            .catch((error) => {
+                console.log("mon erreur", error);
+            });
+
+        
+    }, [id]);
 
     
     const handlchange = (e)=>{
@@ -44,43 +65,43 @@ const AdEdit = (props) => {
         console.log("formdata partie admin inscription",formdata)
 
             
-            // Axios.post("/inscription",formData)
-            //     .then((response)=>{
-            //       console.log("ma reponse",response)
-            //        setmessage(response.data)
-            //        if (response.status === 200) {
-            //         toast.success('inscription effectuée avec succès !', {
-            //             position: 'top-right',
-            //             duration: 2000,
-            //             style: {
-            //                 background: '#4caf50',
-            //                 color: '#ffffff',
-            //             }
-            //         });
-            //     }
+            Axios.post(`/admin/editer/${id}`,formData)
+                .then((response)=>{
+                  console.log("ma reponse",response)
+                   setmessage(response.data)
+                   if (response.status === 200) {
+                    toast.success('inscription effectuée avec succès !', {
+                        position: 'top-right',
+                        duration: 2000,
+                        style: {
+                            background: '#4caf50',
+                            color: '#ffffff',
+                        }
+                    });
+                }
 
-            //         setformdata({
-            //          nom:"",
-            //          email:"",
-            //          password:"",
-            //          image:null,
+                    setformdata({
+                     nom:"",
+                     email:"",
+                     password:"",
+                     image:null,
                    
-            //         })
+                    })
 
-            //     })
-            //     .catch((Error)=>{
-            //      console.log("mon erreur au niveau de la requete",Error)
+                })
+                .catch((Error)=>{
+                 console.log("mon erreur au niveau de la requete",Error)
                  
-            //         toast.error('inscription echouer !', {
-            //             position: 'top-right',
-            //             duration: 2000,
-            //             style: {
-            //                 background: '#f44336',
-            //                 color: '#ffffff',
-            //             }
-            //         });
+                    toast.error('inscription echouer !', {
+                        position: 'top-right',
+                        duration: 2000,
+                        style: {
+                            background: '#f44336',
+                            color: '#ffffff',
+                        }
+                    });
                 
-            //     })
+                })
             
            
                 

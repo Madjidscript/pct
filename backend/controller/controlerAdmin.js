@@ -66,6 +66,22 @@ const ControlerAdmin = class{
     
    }
   }
+
+
+  static AfficheAdminId = async (req=request,res=response)=>{
+    const id = req.params.id
+    console.log("mon id")
+    let message =""
+    const Admin  = await otherAdmin.utilisarteuParID(id)
+    if(Admin){
+      message="recuperation reussit"
+      console.log("ma recuperation",Admin)
+      res.json({Admin,message})
+    }else{
+      message ="recuperation echouer"
+      res.json(message)
+    }
+  }
     static Publiciter = async (req=request,res=response)=>{
         let message =""
         console.log("realisation artisan",req.body,"monimage")
@@ -139,5 +155,52 @@ const ControlerAdmin = class{
          
         
       }
+
+
+
+      static edditer = async(req=request,res=response)=>{
+    
+        const id = req.params.id;
+        console.log("mon id", id, "mon body", req.body);
+    
+        try {
+            // Récupérer l'artisan existant depuis la base de données
+            const Admin = await otherAdmin.utilisarteuParID(id);
+    
+            if (!Admin) {
+                return res.status(404).json({ message: "Admin non trouvé" });
+            }
+    
+            // Vérifier si le champ 'password' est modifié
+            let passwords = req.body.password;
+            let hspass = Admin.password; // Utiliser le mot de passe existant par défaut
+    
+            if (passwords && passwords !== Admin.password) {
+                // Recrypter le nouveau mot de passe s'il est modifié
+                hspass = await bcrypt.hash(passwords, 10);
+            }
+    
+            // Construire les données à mettre à jour
+            const data = {
+                ...req.body,
+                image: req.file ? req.file.path : Admin.image, // Utiliser la nouvelle image ou l'image existante
+                password: hspass, // Utiliser le mot de passe recrypté ou existant
+            };
+    
+            // Effectuer la mise à jour
+            const modif = await otherAdmin.update(id, data);
+    
+            if (modif) {
+                const message = 'Modification effectuée avec succès';
+                res.json({ message });
+            } else {
+                const message = "Erreur de modification des données";
+                res.status(400).json({ message });
+            }
+        } catch (error) {
+            console.error("Erreur lors de la modification", error);
+            res.status(500).json({ message: "Erreur interne du serveur" });
+        }
+        }
 }
 module.exports =ControlerAdmin

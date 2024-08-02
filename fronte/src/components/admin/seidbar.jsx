@@ -10,7 +10,7 @@ const Sidebar = (props) => {
     const [Id,setid]= useState("")
 
     useEffect(() => {
-        const local = JSON.parse(localStorage.getItem("Artisan"));
+        const local = JSON.parse(localStorage.getItem("Admin"));
         
         if (local) {
           console.log("aslam hooo", local.nom,"mon id hoo",local._id);
@@ -60,7 +60,7 @@ const Sidebar = (props) => {
                         <span className="sidebar-icons">&#128100;</span> 
                         <span className="sidebar-title">Inscription</span>
                     </a>
-                    <a href="/admin/edit" className="sidebar-items sidebar-edit-profiles">
+                    <a href={`/admin/edit/${Id}`} className="sidebar-items sidebar-edit-profiles">
                         <span className="sidebar-icons">&#9998;</span> 
                         <span className="sidebar-title">Éditer Profil</span>
                     </a>
