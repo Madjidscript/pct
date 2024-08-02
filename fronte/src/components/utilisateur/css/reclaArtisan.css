@@ -1,0 +1,60 @@
+
+.admin-containers {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+
+.reclamation-containers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+
+.reclamation-cards {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: calc(50% - 20px);
+    box-sizing: border-box;
+    padding: 15px;
+}
+
+
+.client-photos {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+
+.reclamation-details {
+    flex: 1;
+}
+
+
+.reclamation-details p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.reclamation-details p strong {
+    color: #007bff;
+}

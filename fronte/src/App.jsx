@@ -4,6 +4,7 @@ import ArtisanRouter from "../src/components/utilisateur/artisanRouter";
 import AdminRouter from "../src/components/admin/adminRouter";
 import Loader from "./components/utilisateur/loader";
 import Securite from "./service/securite/securitePage";
+import Securite2 from "./service/securite/securiterAdmin";
 import Ss from "../src/components/utilisateur/css/style.module.css"
 function App() {
  
@@ -21,10 +22,15 @@ function App() {
          <ArtisanRouter/>
         </Securite>
         } />
-
-        <Route path="/admin/*" element={<AdminRouter/>}></Route>
+       
+       <Route path="/admin/*" element={
+        <Securite2>
+            <AdminRouter/>
+         </Securite2>
+        }></Route>
+       
       </Routes>
-    
+      
     </BrowserRouter> 
    
       

@@ -1,0 +1,98 @@
+styles.css
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+    background-color: #f0f2f5;
+}
+
+.sidebars {
+    width: 250px;
+    background: linear-gradient(to right,#FF4E00,#FF9600);
+    height: 95vh;
+    color: #ecf0f1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    transition: width 0.3s;
+}
+
+.sidebar-logos {
+    font-size: 24px;
+    color: #ecf0f1;
+    margin: 0;
+    text-align: center;
+}
+
+.sidebar-toggles {
+    background: none;
+    border: none;
+    color: #ecf0f1;
+    font-size: 24px;
+    cursor: pointer;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.toggle-icon::befores {
+    content: '≡'; 
+}
+
+.sidebar-navs {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-items {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: #ecf0f1;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.sidebar-items:hover {
+    background-color: #34495e;
+}
+
+.sidebar-icons {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.sidebar-titles {
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+.main-contents {
+    flex: 1;
+    padding: 20px;
+}
+.sidebar-footers {
+    padding: 20px;
+    
+    margin-top: 100px;
+}
+
+.sidebar-signups, .sidebar-edit-profiles, .sidebar-logouts {
+    font-weight: bold;
+}
+
+
+.sidebar-signups {
+    margin-bottom: 10px;
+}
+
+.sidebar-edit-profiles {
+    margin-bottom: 10px;
+}
+
+.sidebar-logouts {
+    margin-bottom: 0;
+}

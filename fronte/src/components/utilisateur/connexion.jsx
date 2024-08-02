@@ -7,14 +7,29 @@ import { toast,Toaster } from 'react-hot-toast';
 
 const Connexion = (props) => {
     const navigate = useNavigate()
+    const [messages,setmessage]= useState()
+    const [data,setdata]=useState()
+    console.log("mon data .......",data)
 
-    useEffect(()=>{
-        if (LocalService.local()) {
-            console.log("veriffffff")
-            return navigate("/artisan")
+    // useEffect(()=>{
+    //     if (LocalService.local()) {
+    //         const local = JSON.parse(localStorage.getItem("Artisan"));
+    //         setid(local._id)
+    //         console.log("veriffffff",id)
+    //         return navigate(`/artisan/profil/${id}`)
 
+    //     }
+    // })
+    useEffect(() => {
+        const local = JSON.parse(localStorage.getItem("Artisan"));
+        
+        if (local) {
+          console.log("aslam hooo", local.nom,"mon id hoo",local._id);
+          
+          return navigate(`/artisan/profil/${local._id}`)
         }
-    })
+      }, []);
+   
     const [formdata,setformdata]=useState({
         email:"",
         password:""
@@ -32,8 +47,11 @@ const Connexion = (props) => {
             Axios.post("/connexion",formdata)
             .then((response)=>{
                 console.log("m a reponse lors de la connexion",response.data.message,"mon objet",response.data.data._doc)
+                setmessage(response.data.message)
+                setdata(response.data.data._doc)
+                console.log("mon message",messages)
                 if (response.status === 200) {
-                    toast.success('connexion effectuée avec succès !', {
+                    toast.success(messages, {
                         position: 'top-right',
                         duration: 3000,
                         style: {
@@ -44,6 +62,7 @@ const Connexion = (props) => {
                 }
                 const info =response.data.data._doc
                 const ids = info._id
+                
                 console.log("mon info", info);
                 if (info && info !== undefined) {
                     const donner = JSON.stringify(response.data.data._doc)
@@ -75,6 +94,7 @@ const Connexion = (props) => {
                 password:""
             })
     }
+   
     return ( 
         <>
         <Toaster/>

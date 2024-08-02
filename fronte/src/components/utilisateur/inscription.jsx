@@ -4,6 +4,7 @@ import { useState,useEffect } from 'react';
 import {  NavLink,useNavigate} from "react-router-dom";
 import Hearder from "./hearder";
 import Footer from "./footer.jsx"
+import { LocalService } from "../../service/local";
 import LocalisationMap from './carteLocale';
 import Axios from '../../service/apiService.jsx';
 import { toast,Toaster } from 'react-hot-toast';
@@ -12,6 +13,22 @@ const Inscription = (props) => {
     const [latitudes ,setlatitudes]=useState("")
     const[message,setmessage]=useState(null)
     const navigate = useNavigate()
+
+    // useEffect(()=>{
+    //     if (LocalService.local()) {
+    //         console.log("veriffffff")
+    //         return navigate("/artisan")
+
+    //     }
+    // })
+
+    useEffect(() => {
+        const local = JSON.parse(localStorage.getItem("Artisan"));
+        if (local) {
+          console.log("aslam hooo", local.nom,"mon id hoo",local._id);
+          return navigate(`/artisan/profil/${local._id}`)
+        }
+      }, []);
     
     const metiersArtisanat = [
         "Menuisier",

@@ -2,6 +2,7 @@ import React from 'react';
 import Acceuil from './acceuil';
 import Apropos from './apropos';
 import Connexion from './connexion';
+import Connexion2 from '../admin/connexion';
 import Contact from './contact';
 import Error from "../utils/erors"
 import Inscription from './inscription';
@@ -15,6 +16,7 @@ const UtilisatruRouter = (props) => {
                 <Route index element= {<Acceuil/>} />
                 <Route path='apropos' element= {<Apropos/>} />
                 <Route path='connexion' element= {<Connexion/>} />
+                <Route path='connexion2' element= {<Connexion2/>} />
                 <Route path='contact' element= {<Contact/>} />
                 <Route path='profil/:id' element= {<Profil/>} />
                 <Route path='inscription' element= {<Inscription/>} />

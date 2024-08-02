@@ -44,10 +44,15 @@ const ControlerUser = class{
      const email = await req.body.email
      const passwords = await req.body.password
      const verifmail = await otherArtisan.utilisateurParEmail(email)
+
      if (!verifmail) {
       message="email incorrect"
       res.json(message)
-     } else {
+     } 
+     if (!verifmail.statut) {
+      message = "Compte désactivé";
+      return res.status(403).json({ message });
+     }else {
       const verifpass = await bcrypt.compare(passwords,verifmail.password)
       if(verifpass){
         const {password:pwd, ...data} = verifmail
@@ -120,8 +125,22 @@ const ControlerUser = class{
       }
       
     }
+    static GetReclamation1= async (req=request,res=response)=>{
+      let message=""
+      const recup = await otherReclamation1.afficheTout()
+      // console.log("ma recupertion ....",recup)
+      if(recup){
+       message = "reclation client recuperer"
+       res.json({recup,message})
+      }else{
+        message="reclamation client client pas recuperer"
+        res.json({message})
+      }
+     }
+
+     
     static Reclamation2 = async (req=request,res=response)=>{
-      console.log("ma reclamation2",req.body)
+      console.log("ma reclamation2 ",req.body)
      
       const numArtisan = req.body.numArtisan
       const nomArtisan = req.body.nomArtisan
@@ -138,6 +157,17 @@ const ControlerUser = class{
       
       
     }
+    static GetReclamation2= async (req=request,res=response)=>{
+      let message=""
+      const recup =await otherReclamation2.afficheTout()
+      if(recup){
+       message = "reclation client recuperer"
+       res.json({recup,message})
+      }else{
+        message="reclamation client client pas recuperer"
+        res.json({message})
+      }
+     }
 
     static RealisationArtisan = async (req=request,res=response)=>{
       let message =""

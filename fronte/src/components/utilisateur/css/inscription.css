@@ -186,12 +186,13 @@
       margin-bottom: 10px; /* Espacement entre les inputs lorsqu'ils sont en colonne */
   }
 }
-.content {
+.contents {
   display: flex;
+  width: 100%;
   align-items: center;  /* Centre verticalement */
   justify-content: center;  /* Centre horizontalement */
   height: 100vh;  /* Hauteur de la fenêtre */
-  background-color: #f0f0f0;  /* Optionnel, juste pour visualiser le conteneur */
+  background-color: #832121;  /* Optionnel, juste pour visualiser le conteneur */
 }
 
 .centrer {

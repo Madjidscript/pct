@@ -11,7 +11,7 @@ const AdConnexion = (props) => {
     useEffect(()=>{
         if (LocalService.local()) {
             console.log("veriffffff")
-            return navigate("/admin/inscription")
+            return navigate("/admin/liste")
 
         }
     })
@@ -29,51 +29,51 @@ const AdConnexion = (props) => {
             e.preventDefault()
 
             console.log("les donner du formulaire",formdata)
-            // Axios.post("/connexion",formdata)
-            // .then((response)=>{
-            //     console.log("m a reponse lors de la connexion",response.data.message,"mon objet",response.data.data._doc)
-            //     if (response.status === 200) {
-            //         toast.success('connexion effectuée avec succès !', {
-            //             position: 'top-right',
-            //             duration: 3000,
-            //             style: {
-            //                 background: '#4caf50',
-            //                 color: '#ffffff',
-            //             }
-            //         });
-            //     }
-            //     const info =response.data.data._doc
-            //     const ids = info._id
-            //     console.log("mon info", info);
-            //     if (info && info !== undefined) {
-            //         const donner = JSON.stringify(response.data.data._doc)
-            //         console.log("mes doner lor de la connexion",info,"monid depuis la connexion",ids)
-            //         LocalService.savelocal(donner)
-            //         setTimeout(() => {
-            //             console.log("Fonction exécutée après 3 secondes");
-            //             navigate(`/artisan/profil/${ids}`);
-            //         }, 3000);
+            Axios.post("/admin/connexion",formdata)
+            .then((response)=>{
+                console.log("m a reponse lors de la connexion",response.data.message,"mon objet",response.data.data._doc)
+                if (response.status === 200) {
+                    toast.success('connexion effectuée avec succès !', {
+                        position: 'top-right',
+                        duration: 3000,
+                        style: {
+                            background: '#4caf50',
+                            color: '#ffffff',
+                        }
+                    });
+                }
+                const info =response.data.data._doc
+                const ids = info._id
+                console.log("mon info", info);
+                if (info && info !== undefined) {
+                    const donner = JSON.stringify(response.data.data._doc)
+                    console.log("mes doner lor de la connexion",info,"monid depuis la connexion",ids)
+                    LocalService.savelocal(donner)
+                    setTimeout(() => {
+                        console.log("Fonction exécutée après 3 secondes");
+                        navigate(`/admin/liste`);
+                    }, 3000);
                     
-            //     } else {
-            //         navigate("/connexion")
-            //     }
-            // })
-            // .catch((Error)=>{
-            //     console.log('mon error durant la connexion',Error)
-            //     toast.error('connexion echouer !', {
-            //         position: 'top-right',
-            //         duration: 3000,
-            //         style: {
-            //             background: '#f44336',
-            //             color: '#ffffff',
-            //         }
-            //     });
+                } else {
+                    navigate("/connexion")
+                }
+            })
+            .catch((Error)=>{
+                console.log('mon error durant la connexion',Error)
+                toast.error('connexion echouer !', {
+                    position: 'top-right',
+                    duration: 3000,
+                    style: {
+                        background: '#f44336',
+                        color: '#ffffff',
+                    }
+                });
             
-            // })
-            // setformdata({
-            //     email:"",
-            //     password:""
-            // })
+            })
+            setformdata({
+                email:"",
+                password:""
+            })
     }
     return ( 
         <>
