@@ -36,6 +36,8 @@ const Inscription = (props) => {
     const metiersArtisanat = [
         "Boulanger",
         "Charpentier",
+        "coiffeur",
+        "coiffeuse",
         "Couturier",
         "Décorateur",
         "Ébéniste",
