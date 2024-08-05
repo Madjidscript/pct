@@ -30,22 +30,18 @@ const Learning = (props) => {
       </div>
       <h2 className="tt" style={{marginTop:"10px"}} >Instructions Étape par Étape</h2>
       <div className="steps">
-        <h3>1. Créer un compte</h3>
-        <p>
-          Pour commencer, cliquez sur le bouton "Inscription" en haut à droite
-          de la page d'accueil et remplissez vos informations.
-        </p>
-        <h3>2. Parcourir les Artisans</h3>
+        
+        <h3>1. Parcourir les Artisans</h3>
         <p>
           Utilisez notre moteur de recherche pour trouver des artisans par
           catégorie ou par localisation.
         </p>
-        <h3>3. Contacter un Artisan</h3>
+        <h3>2. Contacter un Artisan</h3>
         <p>
           Lorsque vous trouvez un artisan qui vous intéresse, cliquez sur son
           profil pour voir ses coordonnées et le contacter directement.
         </p>
-        <h3>4. Laisser un Avis</h3>
+        <h3>3. Laisser un Avis</h3>
         <p>
           Après avoir utilisé les services d'un artisan, laissez un avis pour
           aider les autres utilisateurs à faire leur choix.
