@@ -13,7 +13,7 @@ function App() {
     <>
     
      <BrowserRouter>
-     <Loader/>
+    
     
     <Routes>
       <Route path="/*" element={<UtilisateurRouter/>} />
