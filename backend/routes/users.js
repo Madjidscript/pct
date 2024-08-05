@@ -10,6 +10,7 @@ const path = require("path/win32");
 /* GET users listing. */
 router.post("/inscription",upload.single("image"),ControlerUser.Inscription)
 router.post("/connexion",ControlerUser.Connexion)
+router.post("/oublier",ControlerUser.Oublier)
 router.post("/reclamation1",ControlerUser.Reclamation1)
 router.get("/reclamation1",ControlerUser.GetReclamation1)
 router.post("/reclamation2",ControlerUser.Reclamation2)

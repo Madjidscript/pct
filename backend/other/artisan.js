@@ -35,6 +35,14 @@ static utilisateurParEmail = async(email)=>{
         console.log("mon erreur",error);
     }
 }
+static utilisateurParUsername = async(utilisateur)=>{
+    try {
+        const recupParUtilisateur = await Artisan.findOne({utilisateur:utilisateur})
+        return recupParUtilisateur
+    } catch (error) {
+        console.log("mon erreur",error);
+    }
+}
 
 static inscription = async(utilisateur)=>{
     try {

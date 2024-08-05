@@ -12,6 +12,9 @@ const Inscription = (props) => {
     const [longitudes ,setlongitudes]=useState("")
     const [latitudes ,setlatitudes]=useState("")
     const[message,setmessage]=useState(null)
+    const [erro, setErro] = useState('');
+    const [error, setError] = useState('');
+   const [errors, setErrors] = useState('');
     const navigate = useNavigate()
 
     // useEffect(()=>{
@@ -31,86 +34,36 @@ const Inscription = (props) => {
       }, []);
     
     const metiersArtisanat = [
-        "Menuisier",
-        "Charpentier",
-        "Ferronnier",
-        "Céramiste",
-        "Tailleur de pierre",
-        "Ebéniste",
-        "Potier",
-        "Joaillier",
-        "Tapissier",
-        "Vitrailliste",
-        "Maroquinier",
-        "Verrier",
-        "Horloger",
-        "Chocolatier",
         "Boulanger",
-        "Pâtissier",
-        "Glacier",
-        "Maître d'art",
-        "Maquettiste",
-        "Restaurateur d'œuvres d'art",
-        "Sculpteur",
+        "Charpentier",
+        "Couturier",
+        "Décorateur",
+        "Ébéniste",
+        "Ferronnier",
         "Forgeron",
-        "Sellier",
-        "Relieur",
-        "Luthier",
-        "Facteur d'instruments de musique",
-        "Modiste",
-        "Gainier",
-        "Brodeur",
-        "Doreur",
-        "Encadreur",
-        "Serrurier",
-        "Cordonnier",
-        "Tapissier-décorateur",
-        "Faïencier",
-        "Métallier",
+        "Maroquinier",
+        "Menuisier",
+        "Paysagiste",
+        "Plombier",
+        "Sculpteur",
+        "Tapissier",
+        "Vigneron",
+        "Vitrailliste",
         "Bijoutier",
-        "Bottier",
-        "Coutelier",
-        "Cuirassier",
-        "Emailler",
-        "Lapidairier",
-        "Marqueteur",
-        "Parcheminier",
-        "Sculpteur sur bois",
-        "Sérigraphe",
-        "Teinturier",
-        "Tourneur sur bois",
-        "Vannier",
-        "Zingueur",
-        "Aquarelliste",
+        "Céramiste",
         "Graveur",
-        "Vitrier",
-        "Tapissier garnisseur",
-        "Facteur de clavecins",
-        "Facteur d'orgues",
-        "Restaurateur de meubles",
-        "Facteur de papier peint",
-        "Restaurateur de tableaux",
-        "Facteur de jouets",
-        "Facteur de poupées",
-        "Facteur d'automates",
-        "Cristallier",
-        "Laqueur",
-        "Imprimeur d'art",
-        "Tatoueur",
-        "Tailleur de pierre précieuse",
-        "Malletier",
-        "Tapissier matelassier",
-        "Polisseur",
-        "Métiers du cuir",
-        "Métiers de la bijouterie-joaillerie",
-        "Métiers du textile",
-        "Métiers du bois",
-        "Métiers du métal",
-        "Métiers de la céramique",
-        "Métiers du verre",
-        "Métiers de l'horlogerie",
-        "Métiers de la restauration d'œuvres d'art"
-        // Ajoutez d'autres métiers d'artisanat selon vos besoins
+        "Horloger",
+        "Joaillier",
+        "Luthier",
+        "Mécanicien",
+        "Orfèvre",
+        "Pépinieriste",
+        "Potiér",
+        "Serrurier",
+        "Tonnelier",
+        "Vannier",
+        "Verrier",
+        "Maréchal-ferrant"
     ];
     
     // Exemple d'utilisation
@@ -119,6 +72,8 @@ const Inscription = (props) => {
     const [formdata,setformdata]=useState({
         nom:"",
         entreprise:"",
+        utilisateur:"",
+        quartier:"",
         tel:"",
         whathsapp:"",
         email:"",
@@ -167,9 +122,33 @@ const Inscription = (props) => {
    
     const handlsubmit =(e)=>{
         e.preventDefault()
+     
+        setErro('');
+        setError('');
+        setErrors('');
+
+// Validation du numéro de téléphone avant l'envoi
+const phoneRegex = /^\+225 \d{6} \d{4}$/;
+if (!phoneRegex.test(formdata.tel)) {
+  setError('Le numéroprincipal de lartisan doit être au format : +225 123400 5678');
+  return;
+}
+if (!phoneRegex.test(formdata.whathsapp)) {
+  setErrors('Le numéro whatsapp de lartisan doit être au format : +225 123400 5678');
+  return;
+}
+  const usernameRegex =/^(?=.*[A-Z])[A-Za-z\d_-]+$/;
+    if (!usernameRegex.test(formdata.utilisateur)) {
+      setErro('Le nom d\'utilisateur doit contenir entre 3 et 10 caractères, avec au moins une majuscule, une minuscule, un chiffre, et peut inclure des tirets (-) ou des underscores (_).'); 
+      return
+    }
+
+
         const formData = new FormData();
         formData.append('nom', formdata.nom);
         formData.append('entreprise', formdata.entreprise);
+        formData.append('utilisateur', formdata.utilisateur);
+        formData.append('quartier', formdata.quartier);
         formData.append('tel', formdata.tel);
         formData.append('whathsapp', formdata.whathsapp);
         formData.append('email', formdata.email);
@@ -188,10 +167,10 @@ const Inscription = (props) => {
             
             Axios.post("/inscription",formData)
                 .then((response)=>{
-                  console.log("ma reponse",response)
+                  console.log("ma reponse dessss",response.data)
                    setmessage(response.data)
                    if (response.status === 200) {
-                    toast.success('inscription effectuée avec succès !', {
+                    toast.success(message, {
                         position: 'top-right',
                         duration: 2000,
                         style: {
@@ -204,6 +183,8 @@ const Inscription = (props) => {
                     setformdata({
                      nom:"",
                      entreprise:"",
+                     utilisateur:"",
+                     quartier:"",
                      tel:"",
                      whathsapp:"",
                      email:"",
@@ -227,9 +208,10 @@ const Inscription = (props) => {
 
                 })
                 .catch((Error)=>{
-                 console.log("mon erreur au niveau de la requete",Error)
+                 console.log("mon erreur au niveau de la requete",Error.response.data)
+                 setmessage(Error.response.data)
                  
-                    toast.error('inscription echouer !', {
+                    toast.error(message, {
                         position: 'top-right',
                         duration: 2000,
                         style: {
@@ -265,7 +247,9 @@ const Inscription = (props) => {
         <div className="cards">
         <h2>Inscription Artisan</h2>
 
-            
+        {erro && <p style={{ color: 'red' }}>{erro}</p>}
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        {errors && <p style={{ color: 'red' }}>{errors}</p>}
         <div className="login_register">
         <NavLink to="/inscription" className="register" >S'inscrit</NavLink>
             <NavLink to="/connexion" className="logins" >se connecter</NavLink>
@@ -279,8 +263,12 @@ const Inscription = (props) => {
               <input type="text"  placeholder="nom de l'  entreprise ou atelier" className="email" name='entreprise' value={formdata.entreprise} onChange={handlchange} required />
            </div>
            <div className="inputCard">
-              <input type="number" placeholder="entre votre numero" className="email" name='tel' value={formdata.tel} onChange={handlchange} required/>
-              <input type="number"  placeholder=" numero wthsapp" className="email" name='whathsapp' value={formdata.whathsapp} onChange={handlchange} required />
+              <input type="text"  placeholder="Entre votre nom d'utilisateur" className="email" name='utilisateur' value={formdata.utilisateur} onChange={handlchange} required />
+              <input type="text"  placeholder="votre quartier" className="email" name='quartier' value={formdata.quartier} onChange={handlchange} required />
+           </div>
+           <div className="inputCard">
+              <input type="text" placeholder="numero:+225 123400 5678" className="email" name='tel' value={formdata.tel} onChange={handlchange} required/>
+              <input type="text"  placeholder="wthsapp:+225 123400 5678" className="email" name='whathsapp' value={formdata.whathsapp} onChange={handlchange} required />
            </div>
            <div className="inputCard">
               <input type="email" placeholder="entre votre mail" className="email" name='email' value={formdata.email} onChange={handlchange} required/>

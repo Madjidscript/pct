@@ -5,11 +5,11 @@ import Axios from '../../service/apiService';
 import { LocalService } from "../../service/local";
 import { toast,Toaster } from 'react-hot-toast';
 
-const Connexion = (props) => {
+const Pswdoublier = (props) => {
     const navigate = useNavigate()
     const [messages,setmessage]= useState()
     const [data,setdata]=useState()
-    
+    console.log("mon data .......",data)
 
     // useEffect(()=>{
     //     if (LocalService.local()) {
@@ -32,7 +32,7 @@ const Connexion = (props) => {
    
     const [formdata,setformdata]=useState({
         email:"",
-        password:""
+       
     })
     const handlchange = (e)=>{
         setformdata({
@@ -44,14 +44,14 @@ const Connexion = (props) => {
             e.preventDefault()
 
             console.log("les donner du formulaire",formdata)
-            Axios.post("/connexion",formdata)
+            Axios.post("/oublier",formdata)
             .then((response)=>{
-                console.log("m a reponse lors de la connexion",response.data,)
+                console.log("m a reponse lors de la connexion",response.data.message,"mon objet",response.data.verifmail)
                 setmessage(response.data.message)
-                setdata(response.data.data._doc)
-                console.log("mon message",response.data.message)
+                setdata(response.data.verifmail)
+                console.log("mon message",messages)
                 if (response.status === 200) {
-                    toast.success(response.data.message, {
+                    toast.success(messages, {
                         position: 'top-right',
                         duration: 3000,
                         style: {
@@ -60,27 +60,26 @@ const Connexion = (props) => {
                         }
                     });
                 }
-                const info = response.data.data._doc
+                const info = response.data.verifmail
                 const ids = info._id
                 
                 console.log("mon info", info);
                 if (info && info !== undefined) {
-                    const donner = JSON.stringify(response.data.data._doc)
+                    const donner = JSON.stringify(response.data.verifmail)
                     console.log("mes doner lor de la connexion",info,"monid depuis la connexion",ids)
                     LocalService.savelocal(donner)
                     setTimeout(() => {
                         console.log("Fonction exécutée après 3 secondes");
-                        navigate(`/artisan/profil/${ids}`);
+                        navigate(`/artisan/edit/${ids}`);
                     }, 3000);
                     
                 } else {
-                    navigate("/connexion")
+                    navigate("/oublier")
                 }
             })
             .catch((Error)=>{
-                console.log('mon error durant la connexion',Error.response.data.message)
-                setmessage(Error.response.data.message)
-                toast.error(messages, {
+                console.log('mon error durant la connexion',Error)
+                toast.error('connexion echouer !', {
                     position: 'top-right',
                     duration: 3000,
                     style: {
@@ -92,7 +91,7 @@ const Connexion = (props) => {
             })
             setformdata({
                 email:"",
-                password:""
+               
             })
     }
    
@@ -107,18 +106,14 @@ const Connexion = (props) => {
             <NavLink to="/connexion" className="login" >connexion</NavLink>
             <NavLink to="/inscription" className="registers"   >S'inscrire</NavLink>
         </div>
-        <div style={{color:"red",margin:"0px auto"}}>{messages}</div>
+         
         <form method='POST' className="form" onSubmit={handlsubmit}>
             <input type="email"  placeholder="Email Adress" className="email" name='email' value={formdata.email} onChange={handlchange} required />
-            <input type="password" placeholder="password" className="password" name='password' value={formdata.password} onChange={handlchange} required/>
+           
             <button className="login_btn">Login</button>
         </form>
 
-        <div className="footer_card">
-        <p>pas menbre?</p>
-        <span><NavLink className="login" to="/inscription">S'inscrire</NavLink>  </span>
-        <span style={{marginLeft:"5px"}}><NavLink className="login" to="/oublier"> Mot de pass oublier</NavLink></span>
-        </div>
+       
     </div>
 
 
@@ -126,4 +121,4 @@ const Connexion = (props) => {
     );
 };
     
-export default Connexion;
+export default Pswdoublier;

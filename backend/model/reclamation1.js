@@ -2,9 +2,10 @@ const mongoose = require("mongoose")
 const validator = require("validator")
 const Schyma = mongoose.Schema({
         nomClient:{type:String,required:true},
-        numClient:{type:Number,required:true},
+        numClient:{type:String,required:true},
         nomArtisan:{type:String,required:true},
-        numArtisan:{type:Number,required:true},
+        numArtisan:{type:String,required:true},
+        date:{type:String,required:true},
         message:{type:String,required:true}
         
        

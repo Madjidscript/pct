@@ -1,10 +1,12 @@
 const mongoose = require("mongoose")
 const validator = require("validator")
 const Schyma = mongoose.Schema({
-    nom:{type:String,required:true},
+        nom:{type:String,required:true},
         entreprise:{type:String,required:true},
-        tel:{type:Number,required:true},
-        whathsapp:{type:Number,required:true},
+        utilisateur:{type:String,required:true},
+        quartier:{type:String,required:true},
+        tel:{type:String,required:true},
+        whathsapp:{type:String,required:true},
         email:{type:String,required:true},
         password:{type:String,required:true},
         longitude:{type:String,required:true},

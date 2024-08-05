@@ -36,6 +36,7 @@ const AdReclamationArtisan = (props) => {
                         <div class="reclamation-cards">
                 {/* <img src="https://via.placeholder.com/100" alt="Photo de la Réclamation" class="reclamation-photo"/> */}
                 <div class="reclamation-contents">
+                    <h3 class="reclamation-names">Date de reclamation: <span>{element.date}</span>  </h3>
                     <h3 class="reclamation-names">Nom Artisan: <span>{element.nomArtisan}</span>  </h3>
                     <p class="reclamation-messages"> Message: <span>{element.message}</span> </p>
                     <h3 class="reclamation-names"> numero Artisan: <span>{element.numArtisan}</span> </h3>

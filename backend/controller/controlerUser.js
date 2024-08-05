@@ -12,12 +12,18 @@ const ControlerUser = class{
       let message=""
       console.log("mes donner",req.body)
       const email = await req.body.email
+      const utilisateur = await req.body.utilisateur
       const password = await req.body.password
       const images= req.file.path
+      const verifutilisateur = await otherArtisan.utilisateurParUsername(utilisateur)
       const verifmail = await otherArtisan.utilisateurParEmail(email)
+      if(verifutilisateur){
+        message="le nom d'utilisateur existe deja"
+       return res.status(400).json(message)
+      }
       if(verifmail){
         message="l'email existe deja"
-        res.json(message)
+       return res.status(400).json(message)
       }else{
         const haspass = await bcrypt.hash(password,10)
         console.log("mon password hashe",haspass);
@@ -30,7 +36,7 @@ const ControlerUser = class{
         const insert = await otherArtisan.inscription(data)
       if(insert){
         message="inscription valider"
-        res.json(message)
+        return res.status(200).json(message)
       }
       }
       
@@ -47,7 +53,7 @@ const ControlerUser = class{
 
      if (!verifmail) {
       message="email incorrect"
-      res.json(message)
+      res.status(400).json({message})
      } 
      if (!verifmail.statut) {
       message = "Compte désactivé";
@@ -58,14 +64,38 @@ const ControlerUser = class{
         const {password:pwd, ...data} = verifmail
         message="connexion reussit"
          console.log("mon data hoo",data);
-         res.json({data,message})
+        return res.status(200).json({data,message})
         
       }else{
         message="mot de pass incorrect"
-        res.json(message)
+       return res.status(400).json({message})
       }
       
      }
+    }
+    static Oublier= async (req=request,res=response)=>{
+      let message =""
+     console.log("ma connexion",req.body)
+     const email = await req.body.email
+     
+     const verifmail = await otherArtisan.utilisateurParEmail(email)
+    //  console.log("monn verifmail",verifmail.statut)
+     if (!verifmail) {
+      message="email incorrect"
+      res.status(400).json(message)
+     } 
+     if (!verifmail.statut) {
+      message = "Compte désactivé";
+      return res.status(403).json({ message });
+     }
+      
+        message="connexion reussit"
+         console.log("mon data hoo",verifmail);
+         res.status(200).json({verifmail,message})
+        
+      
+      
+     
     }
 
     static AfficheArtisan = async (req=request,res=response)=>{
@@ -118,10 +148,10 @@ const ControlerUser = class{
       let message="reclamation efectuer avac succés"
       const envoi = otherReclamation1.inscription(req.body)
       if (envoi) {
-        res.json({message})
+        res.status(200).json({message})
       }else{
         message="reclamation echouer"
-        res.json({message})
+        res.status(400).json({message})
       }
       
     }
@@ -149,10 +179,10 @@ const ControlerUser = class{
       let message="reclamation efectuer avac succés"
       const envoi = otherReclamation2.inscription(req.body)
       if (envoi) {
-        res.json({message})
+        res.status(200).json({message})
       }else{
         message="reclamation echouer"
-        res.json({message})
+        res.status(400).json({message})
       }
       
       
@@ -211,14 +241,45 @@ const ControlerUser = class{
       const supprimer= await otherRealisation.suppression(id)
       if(supprimer){
         message="suppression de realisation valider"
-        res.json({message})
+        res.status(200).json({message})
       }else{
         message="suppresion d'image echouer"
-        res.json({message})
+        res.status(400).json({message})
       }
     }
     static edditer = async(req=request,res=response)=>{
-    
+    //   const id = req.params.id;
+    //   console.log("mon id",id,"mon body",req.body)
+    //    const passwords = req.body.password;
+    //     const images = req.file.path;
+
+        
+    //     const hspass = await bcrypt.hash(passwords, 10);
+
+       
+    //     const data = {
+    //         ...req.body,
+    //       image:req.file.path,
+    //       password:hspass
+
+    //     }
+            
+
+       
+    //     const modif = await otherArtisan.update(id, data);
+
+    //     if (modif) {
+            
+    //         const message = 'Modification effectuée avec succès';
+    //         res.json({ message });
+    //     } else {
+           
+    //         const message = "Erreur de modification des données";
+    //         res.status(400).json({ message });
+    //     }
+    // } 
+
+
     const id = req.params.id;
     console.log("mon id", id, "mon body", req.body);
 

@@ -50,6 +50,17 @@ const Hearder = (props) => {
                 Apropos
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink
+                exact
+                to="/learning"
+                activeClassName="active"
+                className="nav-links"
+                onClick={click ? handleClick : null}
+              >
+                Comment ca marche
+              </NavLink>
+            </li>
             
             <li className="nav-item">
               <NavLink
