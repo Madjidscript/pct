@@ -9,7 +9,7 @@ const AdListArtisan = (props) => {
     const [search,setSearch]=useState("") 
     const [data ,setData]= useState([])
     const [statut,setstatut]= useState()
-    const domain ="http://localhost:3000/"
+    const domain ="https://pct.onrender.com/"
     const onchanges = (e)=>{
       setSearch(e.target.value)
     }

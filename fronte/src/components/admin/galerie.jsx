@@ -8,7 +8,7 @@ import "../utilisateur/css/galerie.css"
 import Seibar from "./seidbar";
 const AdGalerie = (props) => {
 
-    const domain ="http://localhost:3000/"
+    const domain ="https://pct.onrender.com/"
     const [data,setdata]= useState([])
 
     useEffect(()=>{

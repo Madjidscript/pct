@@ -7,7 +7,7 @@ import Axios from '../../service/apiService';
 export default function Profil() {
    const [data,setdata]=useState()
    const [data2,setdata2]=useState()
-   const domain ="http://localhost:3000/"
+   const domain ="https://pct.onrender.com/"
   const {id}= useParams()
   console.log("mon id",id);
   useEffect(()=>{

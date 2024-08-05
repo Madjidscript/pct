@@ -9,7 +9,7 @@ export default function Profils() {
    const [data,setdata]=useState()
    const [data2,setdata2]=useState()
    const [data3,setData3]=useState()
-   const domain ="http://localhost:3000/"
+   const domain ="https://pct.onrender.com/"
    const navigate = useNavigate()
   const {id}= useParams()
   console.log("mon id",id);

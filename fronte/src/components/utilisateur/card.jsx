@@ -16,7 +16,7 @@ function Card({
 }) {
   const [data, setdata] = useState([]);
   console.log("mon image", imgSrc);
-  const domain = "http://localhost:3000/";
+  const domain = "https://pct.onrender.com/";
 
   useEffect(() => {
     Axios.get("/artisan")
