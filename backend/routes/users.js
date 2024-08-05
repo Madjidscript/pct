@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const upload = require("../middlewares/multer")
 const ControlerUser = require("../controller/controlerUser")
-const bcrypt =require("bcrypt");
+const bcrypt = require("bcryptjs")
 const otherArtisan = require('../other/artisan');
 const path = require("path/win32");
 

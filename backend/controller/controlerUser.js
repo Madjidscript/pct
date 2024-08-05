@@ -1,7 +1,7 @@
 const { request } = require("express")
 const otherArtisan = require("../other/artisan")
 const otherRealisation = require("../other/realisation")
-const bcrypt =require("bcrypt")
+const bcrypt = require("bcryptjs")
 const path = require("path/win32");
 const otherReclamation1 = require("../other/reclamation1");
 const otherReclamation2 = require("../other/reclamation2");

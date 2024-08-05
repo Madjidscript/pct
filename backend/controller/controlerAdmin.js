@@ -2,7 +2,8 @@ const { request } = require("express")
 const otherPubliciter = require("../other/publiciter")
 const otherArtisan = require("../other/artisan")
 const otherAdmin= require("../other/admin")
-const bcrypt =require("bcrypt")
+
+const bcrypt = require("bcryptjs")
 const path = require("path/win32");
 
 
