@@ -104,7 +104,7 @@ const Pswdoublier = (props) => {
             
         <div className="login_register">
             <NavLink to="/connexion" className="login" >connexion</NavLink>
-            <NavLink to="/inscription" className="registers"   >S'inscrire</NavLink>
+            <NavLink to="/" className="registers"   >Acceuil</NavLink>
         </div>
          
         <form method='POST' className="form" onSubmit={handlsubmit}>
