@@ -1,5 +1,8 @@
 import React from 'react';
 import "../utilisateur/css/equipe.css"
+import Dg from "../../assets/dg.jpeg"
+import Com from "../../assets/comunication.jfif"
+import Dev from "../../assets/develloppement.jfif"
 const Equipe = (props) => {
     return (
         
@@ -18,7 +21,7 @@ const Equipe = (props) => {
                 <div class="col-lg-3 col-md-6">
                     <div class="box">
                         <div class="image">
-                            <img src="https://i.ibb.co/JC4skS0/team-animate.jpg" alt="team" class="img-fluid"/>
+                            <img src={Dg} alt="team" class="img-fluid"/>
                             <div class="social-icons">
                                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                                 
@@ -26,8 +29,8 @@ const Equipe = (props) => {
                             </div>
                             <div class="overlay"></div>
                         </div>
-                        <h3>Lorem Ipsum</h3>
-                        <h4>Project Manager</h4>
+                        <h3>TAHIBET LAETITIA ANELIA</h3>
+                        <h4>Directeur Generale</h4>
                     </div>
                 </div>
               
@@ -42,15 +45,15 @@ const Equipe = (props) => {
                             </div>
                             <div class="overlay"></div>
                         </div>
-                        <h3>Lorem Ipsum</h3>
-                        <h4>App Developer</h4>
+                        <h3>KOBENAN AROUNA OUATTRA</h3>
+                        <h4>Coordinateur</h4>
                     </div>
                 </div>
                 
                 <div class="col-lg-3 col-md-6">
                     <div class="box">
                         <div class="image">
-                            <img src="https://i.ibb.co/JC4skS0/team-animate.jpg" alt="team" class="img-fluid"/>
+                            <img src={Dev} alt="team" class="img-fluid"/>
                             <div class="social-icons">
                                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                                 
@@ -58,15 +61,15 @@ const Equipe = (props) => {
                             </div>
                             <div class="overlay"></div>
                         </div>
-                        <h3>Lorem Ipsum</h3>
-                        <h4>Front End</h4>
+                        <h3>BALLEY SOLQUEFLO</h3>
+                        <h4>Directeur Service Develloppement</h4>
                     </div>
                 </div>
                
                 <div class="col-lg-3 col-md-6">
                     <div class="box">
                         <div class="image">
-                            <img src="https://i.ibb.co/JC4skS0/team-animate.jpg" alt="team" class="img-fluid"/>
+                            <img src={Com} alt="team" class="img-fluid"/>
                             <div class="social-icons">
                                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                                 
@@ -74,8 +77,8 @@ const Equipe = (props) => {
                             </div>
                             <div class="overlay"></div>
                         </div>
-                        <h3>Lorem Ipsum</h3>
-                        <h4>Web designer</h4>
+                        <h3>KOFFI YEVOU JEAN MARC</h3>
+                        <h4>Chef Servies Communication</h4>
                     </div>
                 </div>
             </div>
