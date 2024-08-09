@@ -113,7 +113,7 @@ const Contact2 = (props) => {
               <input type="text"  placeholder="+225 123400 5678" className="email" name='numArtisan' value={whathsapp} onChange={handlchange} required />
            </div>
            <div className="inputCard">
-              <input type="text" placeholder="nom de l'artisan" className="email" name='date' value={formdata.date} onChange={handlchange} readOnly disabled required />
+              <input type="text" placeholder="la date" className="email" name='date' value={formdata.date} onChange={handlchange} readOnly disabled required />
               
            </div>
            <div className="inputCard">

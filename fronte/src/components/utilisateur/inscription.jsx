@@ -254,44 +254,44 @@ if (!phoneRegex.test(formdata.whathsapp)) {
         {errors && <p style={{ color: 'red' }}>{errors}</p>}
         <div className="login_register">
         <NavLink to="/inscription" className="register" >S'inscrit</NavLink>
-            <NavLink to="/connexion" className="logins" >se connecter</NavLink>
+            <NavLink to="/connexion" className="logins" >Se connecter</NavLink>
             
         </div>
         <div style={{color:"red",margin:"0px auto"}}>{message}</div>
          
         <form method='POST' className="form" onSubmit={handlsubmit} enctype="multipart/form-data" >
            <div className="inputCard">
-              <input type="text"  placeholder="Entre votre nom" className="email" name='nom' value={formdata.nom} onChange={handlchange} required />
-              <input type="text"  placeholder="nom de l'  entreprise ou atelier" className="email" name='entreprise' value={formdata.entreprise} onChange={handlchange} required />
+              <input type="text"  placeholder="Entrez votre nom" className="email" name='nom' value={formdata.nom} onChange={handlchange} required />
+              <input type="text"  placeholder="nom de l'entreprise ou atelier" className="email" name='entreprise' value={formdata.entreprise} onChange={handlchange} required />
            </div>
            <div className="inputCard">
-              <input type="text"  placeholder="Entre votre nom d'utilisateur" className="email" name='utilisateur' value={formdata.utilisateur} onChange={handlchange} required />
-              <input type="text"  placeholder="votre quartier" className="email" name='quartier' value={formdata.quartier} onChange={handlchange} required />
+              <input type="text"  placeholder="Entrez votre nom d'utilisateur" className="email" name='utilisateur' value={formdata.utilisateur} onChange={handlchange} required />
+              <input type="text"  placeholder="Entrez votre quartier" className="email" name='quartier' value={formdata.quartier} onChange={handlchange} required />
            </div>
            <div className="inputCard">
               <input type="text" placeholder="numero:+225 123400 5678" className="email" name='tel' value={formdata.tel} onChange={handlchange} required/>
               <input type="text"  placeholder="wthsapp:+225 123400 5678" className="email" name='whathsapp' value={formdata.whathsapp} onChange={handlchange} required />
            </div>
            <div className="inputCard">
-              <input type="email" placeholder="entre votre mail" className="email" name='email' value={formdata.email} onChange={handlchange} required/>
-              <input type="password"  placeholder=" mot de pass" className="email" name='password' value={formdata.password} onChange={handlchange} required />
+              <input type="email" placeholder="Entrez votre mail" className="email" name='email' value={formdata.email} onChange={handlchange} required/>
+              <input type="password"  placeholder="Entrez votre mot de pass" className="email" name='password' value={formdata.password} onChange={handlchange} required />
            </div>
            <div className="inputCard">
               <input type="text" placeholder="longitude" className="email" name='longitude' value={longitudes} onChange={handlchange} required readonly disabled/>
               <input type="text"  placeholder="altitude" className="email" name='altitude' value={latitudes} onChange={handlchange} required readonly disabled />
            </div>
            <div className="inputCard">
-              <input type="text" placeholder="votre comune" className="email" name='comune' value={formdata.comune} onChange={handlchange} required/>
-              <input type="text"  placeholder="votre ville" className="email" name='ville' value={formdata.ville} onChange={handlchange} required />
+              <input type="text" placeholder="Entrez votre comune" className="email" name='comune' value={formdata.comune} onChange={handlchange} required/>
+              <input type="text"  placeholder="Entrez votre ville" className="email" name='ville' value={formdata.ville} onChange={handlchange} required />
            </div>
            <div className="inputCard">
             <label htmlFor="" style={{marginBottom:"4px"}}> heure d'ouverture</label>
-              <input type="time" placeholder="entrer l'heure d'ouverture" className="email" name='ouverture' value={formdata.ouverture} onChange={handlchange} required/>
+              <input type="time" placeholder="Entrez l'heure d'ouverture" className="email" name='ouverture' value={formdata.ouverture} onChange={handlchange} required/>
               <label htmlFor="" style={{marginBottom:"4px"}}> heure de fermerture</label>
-              <input type="time"  placeholder="entrer l'heure de fermeture " className="email" name='fermeture' value={formdata.fermeture} onChange={handlchange} required />
+              <input type="time"  placeholder="Entrez l'heure de fermeture " className="email" name='fermeture' value={formdata.fermeture} onChange={handlchange} required />
            </div>
            <div className="inputCard">
-           <input type="file"  placeholder="Entrer votre photo" className="email" name='image'   onChange={handfilchange} required />
+           <input type="file"  placeholder="Entrez votre photo" className="email" name='image'   onChange={handfilchange} required />
               <input type="text"  placeholder="votre année dexperience" className="email" name='experience' value={formdata.experience} onChange={handlchange} required />
            </div>
            <div className="inputCard">

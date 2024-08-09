@@ -105,18 +105,18 @@ const Contact = (props) => {
 
 
         <div className="cards" style={{marginTop:"70px"}} >
-        <h2>Reclamation Client</h2>
+        <h2>Reclamation Du Client</h2>
         {error && <p style={{ color: 'red' }}>{error}</p>}
         {errors && <p style={{ color: 'red' }}>{errors}</p>}
         <form method='POST' className="form" onSubmit={handlsubmit}>
            
            <div className="inputCard">
-              <input type="text" placeholder="entre votre nom" className="email" name='nomClient' value={formdata.nomClient} onChange={handlchange} required/>
+              <input type="text" placeholder="Entrer votre nom" className="email" name='nomClient' value={formdata.nomClient} onChange={handlchange} required/>
               <input type="text"  placeholder="+225 123400 5678" className="email" name='numClient' value={formdata.numClient} onChange={handlchange} required />
               
            </div>
            <div className="inputCard">
-              <input type="text" placeholder="nom de l'artisan" className="email" name='nomArtisan' value={formdata.nomArtisan} onChange={handlchange} required />
+              <input type="text" placeholder=" Entrer le nom de l'artisan" className="email" name='nomArtisan' value={formdata.nomArtisan} onChange={handlchange} required />
               <input type="text"  placeholder="+225 123400 5678" className="email" name='numArtisan' value={formdata.numArtisan} onChange={handlchange} required />
               
            </div>
@@ -132,7 +132,7 @@ const Contact = (props) => {
         </form>
 
         <div className="footer_card">
-        <p>NB:<strong>numero wathsapp de lartisan</strong></p>
+        <p>NB:<strong>numero wathsapp de l'artisan</strong></p>
         
         </div>
     </div>

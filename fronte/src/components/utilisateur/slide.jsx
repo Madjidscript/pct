@@ -2,6 +2,7 @@ import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Image from '../../assets/imageArti.jpg'; // Assurez-vous que ce chemin d'accès est correct
 import {useState,useEffect} from "react"
+import Axios from '../../service/apiService';
 const Slide = (props) => {
      const domain ="https://pct.onrender.com/" 
      //http://localhost:3000/
@@ -24,16 +25,16 @@ const Slide = (props) => {
                 data.map((element,index)=>{
                     const imageUrl = element.image ? (domain + element.image.replace(/\\/g, '/')) :Image;
                     return(
-                        <Carousel.Item>
+                        <Carousel.Item id={index}>
                 <img
-                    className="d-block w-100"
+                    className="d-block w-100" 
                     src={imageUrl}
                     alt="First slide"
-                    style={{ maxHeight: '500px', width: '100%', objectFit: 'cover' }}
+                    style={{ height: '500px', width: '100%', objectFit: 'cover',backgroundSize:"cover"}}
                 />
                 <Carousel.Caption>
                     {/* <h3>First slide label</h3> */}
-                    <p> {element.titre} </p>
+                    {/* <p> {element.titre} </p> */}
                 </Carousel.Caption>
             </Carousel.Item>
                     )
