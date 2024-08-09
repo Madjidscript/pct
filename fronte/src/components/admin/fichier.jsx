@@ -21,7 +21,7 @@ const Fichier = (props) => {
 
     const handlsubmit =(e)=>{
         e.preventDefault()
-        console.log("mes donner depuis le fronte",formdata)
+        console.log("mes donners depuis le fronte",formdata)
         const formData = new FormData();
        
         

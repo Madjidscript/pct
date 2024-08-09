@@ -32,7 +32,7 @@ const Adpublicite = (props) => {
                 .then((response)=>{
                   console.log("ma reponse",response)
                   if (response.status === 200) {
-                    toast.success('ajout effectuée avec succès !', {
+                    toast.success('ajouts effectuées avec succès !', {
                         position: 'top-right',
                         duration: 4000,
                         style: {

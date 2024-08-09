@@ -18,7 +18,7 @@ const AdListArtisan = (props) => {
     useEffect (()=>{
         Axios.get('/artisan')
         .then(res => {
-          console.log('Réponse de l\'API :', res.data.Artisan);
+          console.log('Réponses de l\'API :', res.data.Artisan);
           setData(res.data.Artisan)
         })
         .catch(error => {

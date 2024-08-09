@@ -27,7 +27,7 @@ export default function Profils() {
 
     Axios.get(`/realisation/${id}`)
     .then((response)=>{
-      console.log('ma reponse pour la realisation',response.data.recup,"limage heee",response.data.recup[0].image);
+      console.log('ma reponse pour la realisations',response.data.recup,"l'image heee",response.data.recup[0].image);
       setdata2(response.data.recup)
     })
     .catch((error)=>{
