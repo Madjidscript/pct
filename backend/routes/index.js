@@ -13,5 +13,6 @@ router.delete("/delete/:id",ControlerAdmin.supp);
 router.delete("/deletes/:id",ControlerAdmin.suppArtisan);
 router.post("/modif/:id",ControlerAdmin.ModifStatut);
 router.post("/editer/:id",upload.single("image"),ControlerAdmin.edditer);
+router.post("/fichier",upload.single("image"),ControlerAdmin.fichier);
 
 module.exports = router;

@@ -9,6 +9,7 @@ import ListeArtisan from "./listeArtisan"
 import Galerie from "./galerie"
 import Error from "../utils/erors"
 import Edit from "./edit";
+import Fichier from './fichier'
 const AdminRouter = (props) => {
     return (
         
@@ -21,6 +22,7 @@ const AdminRouter = (props) => {
             <Route path='/galeriepub' element={<Galerie/>}></Route>
             <Route path='/liste' element={<ListeArtisan/>}></Route>
             <Route path='/publiciter' element={<Publicite/>}></Route>
+            <Route path='/fichier' element={<Fichier/>}></Route>
             <Route path='/client' element={<ReclClient/>}></Route>
             <Route path='/artisan' element= {<ReclArtisant/>}></Route>
             <Route path='*' element={<Error/>}></Route>

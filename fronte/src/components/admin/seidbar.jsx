@@ -29,7 +29,7 @@ const Sidebar = (props) => {
         
         <>
         <div class="sidebars">
-        <h3 class="sidebar-logos"><img src={logo} alt="" /></h3>
+        <h3 class="sidebar-logos"><img src={logo} alt=""  /></h3>
         {/* <button class="sidebar-toggle" aria-label="Toggle menu">
             <span class="toggle-icon"></span>
         </button> */}
@@ -41,6 +41,10 @@ const Sidebar = (props) => {
             <a href="/admin/publiciter" class="sidebar-items">
                 <span class="sidebar-icons">&#128226;</span> 
                 <span class="sidebar-titles">Publicité</span>
+            </a>
+            <a href="/admin/fichier" class="sidebar-items">
+                <span class="sidebar-icons">&#128196;</span> 
+                <span class="sidebar-titles">import Fichier</span>
             </a>
             <a href="/admin/client" class="sidebar-items">
                 <span class="sidebar-icons">&#128172;</span> 

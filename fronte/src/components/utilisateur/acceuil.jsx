@@ -3,11 +3,13 @@ import Header from "./hearder";
 import Footer from "./footer";
 import RechercheAcceuil1 from "./rechercheAcceuil";
 import Modal from "react-modal";
+import "../utilisateur/css/anime.css"
 import Axios from "../../service/apiService";
 import Card from "./card";
 import Service from "./service";
 import Slide from "./slide";
 import { CalculDistance } from "../utils/distance";
+import Equipe from "./equipe"
 Modal.setAppElement("#root");
 
 const Acceuil = () => {
@@ -17,6 +19,7 @@ const Acceuil = () => {
   const [filteredArtisans, setFilteredArtisans] = useState([]);
   const [filteredMetiers, setFilteredMetiers] = useState([]);
   const [data, setdata] = useState([]);
+  const [message, setmessage] = useState("");
 
   // useEffect(() => {
   //   fetchArtisans();
@@ -157,8 +160,8 @@ const Acceuil = () => {
       <Header />
       {/* <RechercheAcceuil1 openModal={openModal} /> */}
       <section className="hero">
-        <h1>Retrouvez un artisan Chap Chap</h1>
-        {/* <p style={{ color: "red" }}> {message} </p> */}
+        <h1 className="txt">Retrouvez un artisan Chap Chap</h1>
+        <p style={{ color: "red" }}> {message} </p>
         <div className="search-bar">
           <form className="search-input">
             <input
@@ -185,6 +188,9 @@ const Acceuil = () => {
       </section>
       <Service />
       <Slide />
+      
+      <Equipe />
+
 
       {/* Autres composants à intégrer ici */}
       <Footer />
@@ -213,6 +219,7 @@ const Acceuil = () => {
 
               //   return isMetierMatch;
               // })
+              .slice(0, 15)
               .map((artisan, index) => (
                 <Card
                   key={index}

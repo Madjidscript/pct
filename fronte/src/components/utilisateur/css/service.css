@@ -69,4 +69,64 @@
     justify-content:center ;
     align-items: center;
     padding: 30px 0px;
+    margin-top:"100px"
 }
+.bott{
+  display: grid;
+  font-size: 50px;
+  font-weight: 100;
+  margin:0px auto;
+  text-transform: uppercase;
+  color: #FF6300;
+}
+
+.bott .testo{
+  grid-area: 1/1/-1/-1;
+}
+.bott p:nth-of-type(1){
+  clip-path: polygon(0% 0%, 100% 0%, 100% 48%, 0% 58%);
+}
+
+.bott p:nth-of-type(2){
+  clip-path: polygon(0% 60%, 100% 50%, 100% 100%, 0% 100%);
+  color: orange;
+  background: -webkit-linear-gradient(177deg, black 53%, white 65%);
+  background: linear-gradient(177deg, black 53%, white 65%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  transform: translateX(-0.02em);
+}
+/* styles.css */
+
+/* Style de la section Témoignages */
+.testimonials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px; /* Ajustez en fonction de vos besoins */
+  /*background-color: #f9f9f9;  Couleur de fond */
+  padding: 10px;
+  text-align: center;
+}
+
+/* Style du contenu de Témoignages */
+.testimonials-content {
+  position: relative;
+}
+
+/* Style du grand point d'interrogation */
+.question-mark {
+  font-size: 100px; /* Grande taille du point d'interrogation */
+  color: #333; /* Couleur du point d'interrogation */
+  margin-bottom: 20px; /* Espacement sous le point d'interrogation */
+}
+
+/* Style du texte sous le point d'interrogation */
+.testimonials-content p {
+  font-size: 18px;
+  color: #666;
+}
+#temoi{
+  text-align:center;
+}
+

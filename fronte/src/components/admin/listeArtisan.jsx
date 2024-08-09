@@ -10,6 +10,8 @@ const AdListArtisan = (props) => {
     const [data ,setData]= useState([])
     const [statut,setstatut]= useState()
     const domain ="https://pct.onrender.com/"
+    //http://localhost:3000/
+    //https://pct.onrender.com/
     const onchanges = (e)=>{
       setSearch(e.target.value)
     }
@@ -26,9 +28,10 @@ const AdListArtisan = (props) => {
     },[]
     )
   
-    const rechercheUser = data.filter(user=>{
-      return user.nom.toLowerCase().includes(search.toLowerCase());
-    })
+    const rechercheUser = data.filter(user => {
+      // Vérifier si user.nom est défini avant de faire la recherche
+      return user.nom && user.nom.toLowerCase().includes(search.toLowerCase());
+    });
 
 
 
@@ -124,7 +127,9 @@ const AdListArtisan = (props) => {
             </thead>
             <tbody>
                 {
-                    rechercheUser.map((element,index)=>{
+                    rechercheUser
+                    .slice(0,15 )
+                    .map((element,index)=>{
                         const imageUrl = element.image ? (domain + element.image.replace(/\\/g, '/')) :logo;
 
                         return(

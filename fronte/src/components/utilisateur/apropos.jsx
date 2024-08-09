@@ -12,9 +12,11 @@ const Apropos = (props) => {
       <header>
        
         <div className="header-content">
+        
           <h1>À Propos de Nous</h1>
           <p>Découvrez notre mission, vision et l'impact que nous avons sur les artisans en Côte d'Ivoire et au-delà.</p>
         </div>
+       
       </header>
 
       <main>

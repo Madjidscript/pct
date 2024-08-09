@@ -2,9 +2,11 @@ const { request } = require("express")
 const otherPubliciter = require("../other/publiciter")
 const otherArtisan = require("../other/artisan")
 const otherAdmin= require("../other/admin")
-
 const bcrypt = require("bcryptjs")
 const path = require("path/win32");
+const XLSX = require('xlsx');
+const crypto = require('crypto');
+const imagess = "../uploads/image-1723176379082.png"
 
 
 
@@ -203,5 +205,82 @@ const ControlerAdmin = class{
             res.status(500).json({ message: "Erreur interne du serveur" });
         }
         }
-}
+
+        static fichier = async(req=request,res=response)=>{
+          const generatePassword = () => crypto.randomBytes(8).toString('hex');
+          const generateUsername = (name) => name ? name.charAt(0).toUpperCase() + name.slice(1).toLowerCase() : 'DefaultUser';
+
+          try {
+            const workbook = XLSX.readFile(req.file.path);
+          const sheetName = workbook.SheetNames[0];
+          const worksheet = workbook.Sheets[sheetName];
+          const data = XLSX.utils.sheet_to_json(worksheet);
+
+
+          for (const row of data) {
+            const {
+              nom, tel, whathsapps, email, experience, metier, heure,heure2, commune, commune2, villes, villes2, latitude, longitude
+            } = row;
+            
+
+            function cleanString(value) {
+              return value ? value.replace(/^\d+\.\s*/, '') : ''; // Supprime les nombres et points au début
+            }
+            
+
+            // Gérer les valeurs par défaut et conditions
+            const emailValue = email || (nom ? `${nom.toLowerCase().replace(/\s+/g, '')}@gmail.com` : 'default@example.com');
+            const password = generatePassword();
+            const hashpass = await bcrypt.hash(password,10)
+            const nomUtilisateur = generateUsername(nom);
+           
+            // Gestion des champs 'commune' et 'ville'
+            const communeValue = commune === 'Autre (Préciser)' ? commune2 : commune;
+            const villeValue = villes === 'Autre (Préciser)' ? villes2 : villes;
+            const heureValue = heure === 'Autre (Préciser)' ? heure2 : heure;
+            const entreprises = `${nom} ${cleanString(metier)} `
+            const tels = tel ? `+225 0${tel}` : "pas de numero telephone"
+            const what = whathsapps ? `+225 0${whathsapps}` : "pas connecter sur whatsapp"
+            const met =cleanString(metier).trim()
+            // Créer un nouvel utilisateur
+            const data2 = {
+              nom,
+              email: emailValue,
+              password: hashpass,
+              metier:met,
+              entreprise: cleanString(entreprises), // Nettoyer les données d'entreprise si nécessaire
+              experience: cleanString(experience),
+              ville: cleanString(villeValue), // Utilisation de la valeur conditionnelle nettoyée
+              commune: cleanString(communeValue), // Utilisation de la valeur conditionnelle nettoyée
+              quartier: cleanString(communeValue), // Nettoyer quartierValue
+              longitude: longitude || 0, // Assurez-vous que 'longitude' est défini ou mettez une valeur par défaut
+              tel: tels,
+              whatsapp: what, // Corriger la faute de frappe
+              altitude: latitude || 0, // Assurez-vous que 'latitude' est défini ou mettez une valeur par défaut
+              ouverture: cleanString(heureValue),
+              fermeture: cleanString(heureValue),
+              image: imagess,
+              utilisateur: nomUtilisateur,
+              statut: true
+            };
+            console.log("mon data2",data2)
+      
+           const post = await otherArtisan.inscription(data2);
+           
+          }
+            res.status(200).json({message:'Data importation reuissit'});
+          } catch (error) {
+            console.error(error);
+            if (!res.headersSent) { // Vérifiez si les en-têtes ont déjà été envoyés
+            res.status(500).json({ message: 'Erreur lors de l\'importation des données' });
+    }
+          }
+          
+          // Nettoyage du fichier téléchargé après l'importation
+          //fs.unlinkSync(filePath);
+          
+          
+        }  
+        }
+
 module.exports =ControlerAdmin

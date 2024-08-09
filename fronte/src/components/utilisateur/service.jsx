@@ -3,7 +3,13 @@ import "./css/service.css"
 const Service = (props) => {
     return (
         <>
-        <div className="heard"><h1>Nos Service</h1></div>
+        <div className="heard">
+          <div className="bott">
+           <p className="testo">Nos Services</p>
+           <p className="testo">Nos Services</p>
+           
+          </div>
+        </div>
         <div class="containers">
           
           <div class="boxs" id="box1">
@@ -39,6 +45,17 @@ const Service = (props) => {
 
           </div>
         </div>
+        
+        <div className="bott" id="temoi" >
+           <p className="testo">Temoignages</p>
+           <p className="testo">Temoignages</p>
+        </div>
+        <section class="testimonials">
+        <div class="testimonials-content">
+          <div class="question-mark">?</div>
+          <p>Les témoignages seront bientôt disponibles !</p>
+        </div>
+      </section>
         
         </>
     );
