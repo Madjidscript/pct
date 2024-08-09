@@ -53,7 +53,7 @@ const ControlerUser = class{
 
      if (!verifmail) {
       message="email incorrect"
-      res.status(400).json({message})
+      return res.status(400).json({message})
      } 
      if (!verifmail.statut) {
       message = "Compte désactivé";

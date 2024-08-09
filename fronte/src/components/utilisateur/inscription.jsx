@@ -281,7 +281,7 @@ if (!phoneRegex.test(formdata.whathsapp)) {
               <input type="text"  placeholder="altitude" className="email" name='altitude' value={latitudes} onChange={handlchange} required readonly disabled />
            </div>
            <div className="inputCard">
-              <input type="text" placeholder="Entrez votre comune" className="email" name='comune' value={formdata.comune} onChange={handlchange} required/>
+              <input type="text" placeholder="Entrez votre commune" className="email" name='comune' value={formdata.comune} onChange={handlchange} required/>
               <input type="text"  placeholder="Entrez votre ville" className="email" name='ville' value={formdata.ville} onChange={handlchange} required />
            </div>
            <div className="inputCard">

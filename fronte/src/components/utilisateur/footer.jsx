@@ -38,7 +38,7 @@ const Footer = (props) => {
           <li class="link_name">Contact </li>
           <li><a href="#">Adresse physique:Abidjan IIplateau vallon.</a></li>
           <li><a href="#">Adresse email:abdoul.latoundji@uvci.edu.ci</a></li>
-          <li><a href="#">Numéro de téléphone:01-53-53-50-65</a></li>
+          <li><a href= {`tel:01-53-53-50-65`} style={{textWrap:"nowrap"}}>Numéro de téléphone:01-53-53-50-65</a></li>
           
           
         </ul>

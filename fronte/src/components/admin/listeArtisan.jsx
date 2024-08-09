@@ -20,6 +20,10 @@ const AdListArtisan = (props) => {
         .then(res => {
           console.log('Réponses de l\'API :', res.data.Artisan);
           setData(res.data.Artisan)
+          const metiers = data.map(item => item.metier);
+          // Utiliser Set pour obtenir des métiers uniques
+          const metiersUniques = [...new Set(metiers)];
+          console.log("mai metier unique pour copier",metiersUniques)
         })
         .catch(error => {
           console.error('Erreur lors de la requête :', error);

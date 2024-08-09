@@ -68,10 +68,10 @@ const Hearder2 = (props) => {
                 className="nav-links"
                 onClick={click ? handleClick : null}
               >
-                contact
+                reclamation client
               </NavLink>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <NavLink
                 exact
                 to="/artisan/abonnement"
@@ -81,7 +81,7 @@ const Hearder2 = (props) => {
               >
                 abonnement
               </NavLink>
-            </li>
+            </li> */}
             
             <li className="nav-item">
               <NavLink

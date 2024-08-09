@@ -30,7 +30,7 @@ const Equipe = (props) => {
                             <div class="overlay"></div>
                         </div>
                         <h3>TAHIBET LAETITIA ANELIA</h3>
-                        <h4>Directeur Generale</h4>
+                        <h4>Directrice Generale</h4>
                     </div>
                 </div>
               
