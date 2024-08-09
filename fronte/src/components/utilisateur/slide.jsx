@@ -1,9 +1,9 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Image from '../../assets/imageArti.jpg'; // Assurez-vous que ce chemin d'accès est correct
-import {useState} from "react"
+import {useState,useEffect} from "react"
 const Slide = (props) => {
-     const domain ="http://localhost:3000/"
+     const domain ="https://pct.onrender.com/" 
      //http://localhost:3000/
      //https://pct.onrender.com/
     const [data,setdata]= useState([])
