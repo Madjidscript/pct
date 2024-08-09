@@ -38,7 +38,7 @@ const Inscription = (props) => {
         "Charpentier",
         "coiffeur",
         "coiffeuse",
-        "Couturier",
+        "Couture",
         "Décorateur",
         "Ébéniste",
         "Ferronnier",

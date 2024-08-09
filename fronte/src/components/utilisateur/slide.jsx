@@ -1,7 +1,7 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Image from '../../assets/imageArti.jpg'; // Assurez-vous que ce chemin d'accès est correct
-
+import {useState} from "react"
 const Slide = (props) => {
      const domain ="http://localhost:3000/"
      //http://localhost:3000/

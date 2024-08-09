@@ -109,15 +109,15 @@ const Connexion = (props) => {
         </div>
         <div style={{color:"red",margin:"0px auto"}}>{messages}</div>
         <form method='POST' className="form" onSubmit={handlsubmit}>
-            <input type="email"  placeholder="Email Adress" className="email" name='email' value={formdata.email} onChange={handlchange} required />
-            <input type="password" placeholder="password" className="password" name='password' value={formdata.password} onChange={handlchange} required/>
-            <button className="login_btn">Login</button>
+            <input type="email"  placeholder="Addresse Mail" className="email" name='email' value={formdata.email} onChange={handlchange} required />
+            <input type="password" placeholder="Mot De Pass" className="password" name='password' value={formdata.password} onChange={handlchange} required/>
+            <button className="login_btn">Connexion</button>
         </form>
 
         <div className="footer_card">
         <p>pas menbre?</p>
         <span><NavLink className="login" to="/inscription">S'inscrire</NavLink>  </span>
-        <span style={{marginLeft:"5px"}}><NavLink className="login" to="/oublier"> Mot de pass oublier</NavLink></span>
+        <span style={{marginLeft:"5px"}}><NavLink className="login" to="/oublier"> Mot de pass oublié</NavLink></span>
         </div>
     </div>
 
