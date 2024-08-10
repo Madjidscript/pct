@@ -5,15 +5,26 @@ import AdminRouter from "../src/components/admin/adminRouter";
 import Loader from "./components/utilisateur/loader";
 import Securite from "./service/securite/securitePage";
 import Securite2 from "./service/securite/securiterAdmin";
+import React, { useState, useEffect } from 'react';
 import Ss from "../src/components/utilisateur/css/style.module.css"
 function App() {
  
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Simuler le chargement de la page
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 1000); // Ajustez le délai si nécessaire
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
     
      <BrowserRouter>
-    <Loader/>
+     {!isLoaded && <Loader />} {/* Affiche le loader tant que isLoaded est false */}
     
     <Routes>
       <Route path="/*" element={<UtilisateurRouter/>} />
