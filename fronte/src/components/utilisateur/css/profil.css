@@ -4,7 +4,9 @@
 /* .pp{
 color: black;
 } */
-
+.pct{
+  color:white;
+}
 
 .image-container {
   display: flex;

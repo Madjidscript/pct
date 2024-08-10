@@ -76,11 +76,11 @@ export default function Profils() {
                 />} 
                 
                 </div>
-                <div className="ms-3" style={{ marginTop: '110px' }}>
-                <MDBCardText className="font-italic" >
-                  <strong>Nom de L'artisan:</strong> {data && data.nom}
+                <div className="ms-3" style={{ marginTop: '110px',color:"white"}}>
+                <MDBCardText className="font-italic" style={{color:"white"}} >
+                  <strong className='pct'>Nom de L'artisan:</strong> {data && data.nom}
                 </MDBCardText>
-                  <MDBCardText><strong>{data && data.ville}</strong></MDBCardText>
+                  <MDBCardText style={{color:"white"}}><strong>{data && data.ville}</strong></MDBCardText>
                 </div>
               </div>
               <div className="p-4 text-black" style={{ backgroundColor: '#f8f9fa' }}>
@@ -88,9 +88,9 @@ export default function Profils() {
                   <div>
                     <MDBCardText className="mb-1 h5"><a href="/artisan/contact" className="text-muted"style={{ marginRight:"10px"}}>Contact  </a></MDBCardText>
                   </div>
-                  <div>
+                  {/* <div>
                     <MDBCardText className="mb-1 h5"><a href="/artisan/abonnement" className="text-muted">Abonnement</a></MDBCardText>
-                  </div>
+                  </div> */}
                   <div className="px-3">
                   <MDBCardText className="mb-1 h5"><NavLink exact to={`/artisan/edit/${id}`} className="text-muted">Editer</NavLink></MDBCardText>
                   </div>

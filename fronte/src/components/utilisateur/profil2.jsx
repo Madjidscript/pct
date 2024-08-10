@@ -59,11 +59,11 @@ export default function Profil() {
 
                   
                 </div>
-                <div className="ms-3" style={{ marginTop: '130px' }}>
-                <MDBCardText className="font-italic">
-                  <strong>Nom de L'artisan:</strong> {data && data.nom}
+                <div className="ms-3" style={{ marginTop: '130px',color:"white" }}>
+                <MDBCardText className="font-italic" style={{color:"white"}}>
+                  <strong className='pct'>Nom de L'artisan:</strong> {data && data.nom}
                 </MDBCardText>
-                  <MDBCardText><strong>{data && data.ville}</strong></MDBCardText>
+                  <MDBCardText style={{color:"white"}}><strong>{data && data.ville}</strong></MDBCardText>
                 </div>
               </div>
               <div className="p-4 text-black" style={{ backgroundColor: '#f8f9fa' }}>
