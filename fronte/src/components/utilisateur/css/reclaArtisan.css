@@ -58,3 +58,37 @@ h1 {
 .reclamation-details p strong {
     color: #007bff;
 }
+
+.reclamation-cards {
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+
+.btn-encours-traitement {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    background-color: #007bff; /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+   
+}
+
+.btn-encours-traitement i {
+    margin-right: 8px; /* Espacement entre l'icône et le texte */
+}
+
+.btn-encours-traitement:hover {
+    background-color: #0056b3; /* Couleur de fond au survol */
+}
+

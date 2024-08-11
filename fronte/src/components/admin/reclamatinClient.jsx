@@ -4,6 +4,7 @@ import { useState,useEffect } from 'react';
 import "../utilisateur/css/liste.css"
 import "../utilisateur/css/reclaArtisan.css"
 import Axios from '../../service/apiService';
+import { toast,Toaster } from 'react-hot-toast';
 const AdReclamationClient = (props) => {
      const [data,setdata]= useState([])
 
@@ -18,9 +19,41 @@ const AdReclamationClient = (props) => {
       })
      },[])
 
+     const handleButtonClick = (id) => {
+      Axios.delete(`/admin/delete1/${id}`)
+          .then((response) => {
+            console.log('Réalisation supprimée avec succès');
+            // Mettre à jour l'état local des réalisations après suppression
+            if (response.status === 200) {
+              toast.success('traitement  terminer !', {
+                  position: 'top-right',
+                  duration: 4000,
+                  style: {
+                      background: '#4caf50',
+                      color: '#ffffff',
+                  }
+              });
+          }
+           
+            window.location.reload();
+          })
+          .catch((error) => {
+            console.error('Erreur lors de la suppression de la réalisation', error);
+            toast.error('suppression echouer !', {
+              position: 'top-right',
+              duration: 4000,
+              style: {
+                  background: '#f44336',
+                  color: '#ffffff',
+              }
+          });
+          });
+  };
+
     return (
         
       <>
+       <Toaster/>
       <div className="mds">
       <div className="left-sides">
           <Seibar/>
@@ -31,12 +64,17 @@ const AdReclamationClient = (props) => {
         <h1 style={{color:'black'}}>Réclamations Clients</h1>
         <div class="reclamation-containers">
           {
-            data.map((element)=>{
+            data.map((element,index)=>{
               return( 
-              <div class="reclamation-cards">
-                
+              <div class="reclamation-cards" key={index}>
+                <button
+                 onClick={() => handleButtonClick(element._id)}
+                  className="btn-encours-traitement"
+                     >
+                      <i className="fas fa-cogs"></i> En cours de traitement
+                      </button>
                 <div class="reclamation-details">
-                    <p><strong>Date de reclamation:</strong> {element.date} </p>
+                    <p style={{marginTop:"35px"}}><strong>Date de reclamation:</strong> {element.date} </p>
                     <p><strong>Numéro client:</strong> {element.numClient} </p>
                     <p><strong>Nom Client:</strong> {element.nomClient}</p>
                     <p><strong>Message:</strong> {element.message} </p>

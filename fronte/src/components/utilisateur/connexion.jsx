@@ -104,8 +104,8 @@ const Connexion = (props) => {
 
             
         <div className="login_register">
-            <NavLink to="/connexion" className="login" >connexion</NavLink>
-            <NavLink to="/inscription" className="registers"   >S'inscrire</NavLink>
+            <NavLink to="/connexion" className="login" >Connexion</NavLink>
+            <NavLink to="/" className="registers"   >Accueil</NavLink>
         </div>
         <div style={{color:"red",margin:"0px auto"}}>{messages}</div>
         <form method='POST' className="form" onSubmit={handlsubmit}>

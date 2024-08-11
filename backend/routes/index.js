@@ -11,6 +11,8 @@ router.post("/publiciter",upload.single("image"),ControlerAdmin.Publiciter);
 router.get("/publiciter",ControlerAdmin.GetPubliciter);
 router.delete("/delete/:id",ControlerAdmin.supp);
 router.delete("/deletes/:id",ControlerAdmin.suppArtisan);
+router.delete("/delete1/:id",ControlerAdmin.suppMessageClient);
+router.delete("/delete2/:id",ControlerAdmin.suppMessageArtisan);
 router.post("/modif/:id",ControlerAdmin.ModifStatut);
 router.post("/editer/:id",upload.single("image"),ControlerAdmin.edditer);
 router.post("/fichier",upload.single("image"),ControlerAdmin.fichier);

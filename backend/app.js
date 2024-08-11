@@ -16,9 +16,10 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use('/uploads',express.static('./uploads'));
-app.use(cors({
-  origin: 'https://pct-theta.vercel.app'
-}));
+app.use(cors());  
+// {
+//   origin: 'https://pct-theta.vercel.app'
+// }
 app.use(logger('dev'));
 app.use(express.json());
 //configuration de ma session

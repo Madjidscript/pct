@@ -2,6 +2,8 @@ const { request } = require("express")
 const otherPubliciter = require("../other/publiciter")
 const otherArtisan = require("../other/artisan")
 const otherAdmin= require("../other/admin")
+const otherReclamation1 = require ("../other/reclamation1")
+const otherReclamation2 = require("../other/reclamation2")
 const bcrypt = require("bcryptjs")
 const path = require("path/win32");
 const XLSX = require('xlsx');
@@ -111,6 +113,7 @@ const ControlerAdmin = class{
           res.json({message})
         }
        }
+
        static supp = async (req=request,res=response)=>{
         let message=""
         const id =req.params.id
@@ -130,6 +133,32 @@ const ControlerAdmin = class{
         const id =req.params.id
         
         const supprimer= await otherArtisan.suppression(id)
+        if(supprimer){
+          message="suppression de realisation valider"
+          res.json({message})
+        }else{
+          message="suppresion d'image echouer"
+          res.json({message})
+        }
+      }
+       static suppMessageArtisan = async (req=request,res=response)=>{
+        let message=""
+        const id =req.params.id
+        
+        const supprimer= await otherReclamation2.suppression(id)
+        if(supprimer){
+          message="suppression de realisation valider"
+          res.json({message})
+        }else{
+          message="suppresion d'image echouer"
+          res.json({message})
+        }
+      }
+       static suppMessageClient = async (req=request,res=response)=>{
+        let message=""
+        const id =req.params.id
+        
+        const supprimer= await otherReclamation1.suppression(id)
         if(supprimer){
           message="suppression de realisation valider"
           res.json({message})
