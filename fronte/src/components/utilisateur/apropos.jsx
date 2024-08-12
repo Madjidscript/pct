@@ -14,7 +14,7 @@ const Apropos = (props) => {
         <div className="header-content">
         
           <h1>À Propos de Nous</h1>
-          <p className='pct' style={{color:"white"}}>Découvrez notre mission, vision et l'impact que nous avons sur les artisans en Côte d'Ivoire et au-delà.</p>
+          <p className='pct' style={{color:"#ff8c00"}}>Découvrez notre mission, vision et l'impact que nous avons sur les artisans en Côte d'Ivoire et au-delà.</p>
         </div>
        
       </header>

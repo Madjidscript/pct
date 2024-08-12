@@ -87,7 +87,7 @@ const AdInscription = (props) => {
               <input type="password"  placeholder="Entrez votre mot de pass" className="email" name='password' value={formdata.password} onChange={handlchange} required />
               <input type="file"  placeholder="Entrer votre photo" className="email" name='image' value={formdata.image} onChange={handlchange} required />
            
-             <button className="login_btn">Ajouter</button>
+             <button className="login_btn">Inscription</button>
             </form>
                
             </div>

@@ -100,7 +100,7 @@ const Connexion = (props) => {
         <>
         <Toaster/>
         <div className="cardss">
-        <h2>Conexion</h2>
+        <h2>Conexion Artisan</h2>
 
             
         <div className="login_register">

@@ -34,7 +34,7 @@ const Sidebar = (props) => {
         
         <>
         <div class="sidebars">
-        <h3 class="sidebar-logos"><img src={logo} alt=""  /></h3>
+        <h3 class="sidebar-logos"><img src={logo} alt="" style={{width:"35px",height:"35px",borderRadius:"50%"}} /></h3>
         {/* <button class="sidebar-toggle" aria-label="Toggle menu">
             <span class="toggle-icon"></span>
         </button> */}
