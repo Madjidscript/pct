@@ -72,7 +72,7 @@ const AdReclamationClient = (props) => {
                   className="btn-encours-traitement"
                      >
                       <i className="fas fa-cogs"></i> En cours de traitement
-                      </button>
+                </button>
                 <div class="reclamation-details">
                     <p style={{marginTop:"35px"}}><strong>Date de reclamation:</strong> {element.date} </p>
                     <p><strong>Numéro client:</strong> {element.numClient} </p>

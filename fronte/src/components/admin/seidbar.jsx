@@ -8,14 +8,19 @@ const Sidebar = (props) => {
 
     const [Nom,setNom]= useState("")
     const [Id,setid]= useState("")
+    const [Image,setimage]= useState()
+    const domain ="http://localhost:3000/"
+    //http://localhost:3000/
+    //https://pct.onrender.com/
 
     useEffect(() => {
         const local = JSON.parse(localStorage.getItem("Admin"));
         
         if (local) {
-          console.log("aslam hooo", local.nom,"mon id hoo",local._id);
+          console.log("aslam hooo", local.nom,"mon id hoo",local._id,"mon image",local.image.replace(/\\/g, '/'));
           setNom(local.nom);
           setid(local._id)
+          setimage(domain + local.image.replace(/\\/g, '/'))
         }
       }, []);
       console.log("mon id",Nom,Id)

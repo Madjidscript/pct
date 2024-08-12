@@ -79,18 +79,14 @@ const AdConnexion = (props) => {
         <>
         <Toaster/>
         <div className="cardss">
-        <h2>Conexion</h2>
+        <h2>Connexion</h2>
 
-            
-       
-         
         <form method='POST' className="form" onSubmit={handlsubmit}>
-            <input type="email"  placeholder="Email Adress" className="email" name='email' value={formdata.email} onChange={handlchange} required />
-            <input type="password" placeholder="password" className="password" name='password' value={formdata.password} onChange={handlchange} required/>
-            <button className="login_btn">Login</button>
+            <input type="email"  placeholder="Adress mail" className="email" name='email' value={formdata.email} onChange={handlchange} required />
+            <input type="password" placeholder="mot de pass" className="password" name='password' value={formdata.password} onChange={handlchange} required/>
+            <button className="login_btn">Connexion</button>
         </form>
 
-        
     </div>
 
 

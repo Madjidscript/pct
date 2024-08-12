@@ -141,7 +141,7 @@ const AdEdit = (props) => {
       
    </div>
   
-    <button className="login_btn">inscription</button>
+    <button className="login_btn">Editer</button>
 </form>
 
             </div>

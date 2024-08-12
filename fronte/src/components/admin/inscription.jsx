@@ -82,9 +82,9 @@ const AdInscription = (props) => {
             <div className="center-content">
             <form method='POST' className="form" onSubmit={handlsubmit} enctype="multipart/form-data" >
            
-              <input type="text"  placeholder="Entre votre nom" className="email" name='nom' value={formdata.nom} onChange={handlchange} required />
-              <input type="email"  placeholder="Entre votre email" className="email" name='email' value={formdata.email} onChange={handlchange} required />
-              <input type="password"  placeholder="Entre votre pswd" className="email" name='password' value={formdata.password} onChange={handlchange} required />
+              <input type="text"  placeholder="Entrez votre nom" className="email" name='nom' value={formdata.nom} onChange={handlchange} required />
+              <input type="email"  placeholder="Entrez votre email" className="email" name='email' value={formdata.email} onChange={handlchange} required />
+              <input type="password"  placeholder="Entrez votre mot de pass" className="email" name='password' value={formdata.password} onChange={handlchange} required />
               <input type="file"  placeholder="Entrer votre photo" className="email" name='image' value={formdata.image} onChange={handlchange} required />
            
              <button className="login_btn">Ajouter</button>
