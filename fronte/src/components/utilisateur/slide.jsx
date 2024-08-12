@@ -33,7 +33,7 @@ const Slide = (props) => {
                     style={{ height: '500px', width: '100%', objectFit: 'cover',backgroundSize:"cover"}}
                 />
                 <Carousel.Caption>
-                    {/* <h3>First slide label</h3> */}
+                    
                     {/* <p> {element.titre} </p> */}
                 </Carousel.Caption>
             </Carousel.Item>
