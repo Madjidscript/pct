@@ -75,9 +75,8 @@ const Fichier = (props) => {
              <div class="right-side">
             <div className="center-content">
             <form method='POST' className="form" onSubmit={handlsubmit} enctype="multipart/form-data" >
-           
-              
-              <input type="file"  placeholder="Entrer votre photo" className="email" name='image' value={formdata.image} onChange={handlchange} required />
+    
+              <input type="file"  placeholder="Entrer votre fichier" className="email" name='image' value={formdata.image} onChange={handlchange} required />
            
              <button className="login_btn">Ajouter</button>
             </form>

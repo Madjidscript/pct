@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const upload = require("../middlewares/multer")
 const ControlerAdmin = require('../controller/controlerAdmin')
-/* GET home page. */
+
 
 router.post("/inscription",upload.single("image"),ControlerAdmin.Inscription);
 router.post("/connexion",ControlerAdmin.Connexion);

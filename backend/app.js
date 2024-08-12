@@ -9,7 +9,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const { connected } = require('./config/mongoose');
 const cors = require('cors')
-connected().catch(error=>console.log("erreur au niveau de la bases de doner",error))
+connected().catch(error=>console.log("erreur au niveau de la bases de donner",error))
 var app = express();
 
 // view engine setup
