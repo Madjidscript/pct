@@ -15,6 +15,7 @@ const imagess = "../uploads/image-1723176379082.png"
 
 const ControlerAdmin = class{
   static Inscription = async(req=request,res=response)=>{
+    console.log("mon image dedy",req.file)
     let message=""
     console.log("mes donner",req.body)
     const email = await req.body.email

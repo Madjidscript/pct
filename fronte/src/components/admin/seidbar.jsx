@@ -9,7 +9,7 @@ const Sidebar = (props) => {
     const [Nom,setNom]= useState("")
     const [Id,setid]= useState("")
     const [Image,setimage]= useState()
-    const domain ="http://localhost:3000/"
+    const domain ="https://pct.onrender.com/"
     //http://localhost:3000/
     //https://pct.onrender.com/
 
