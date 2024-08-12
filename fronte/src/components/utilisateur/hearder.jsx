@@ -81,7 +81,7 @@ const Hearder = (props) => {
                 className="nav-links"
                onClick={click ? handleClick : null}
               >
-                se connecter
+                Se connecter
               </NavLink>
             </li>
           </ul>

@@ -42,20 +42,20 @@ const Footer = (props) => {
           
           
         </ul>
-        <ul class="box input-box">
+        {/* <ul class="box input-box">
           <li class="link_name">Subscribe</li>
           <li><input type="text" placeholder="Enter your email"/></li>
           <li><input type="button" value="Subscribe"/></li>
-        </ul>
+        </ul> */}
       </div>
     </div>
     <div className="bottom-details">
       <div className="bottom_text">
         <span className="copyright_text">Copyright © 2024 <a href="#">E-artisans</a>Tout droit de reservation</span>
-        <span className="policy_terms">
+        {/* <span className="policy_terms">
           <a href="#">Privacy policy</a>
           <a href="#">Terms & condition</a>
-        </span>
+        </span> */}
       </div>
     </div>
   </footer>

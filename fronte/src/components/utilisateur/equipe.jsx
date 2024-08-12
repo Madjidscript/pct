@@ -1,6 +1,7 @@
 import React from 'react';
 import "../utilisateur/css/equipe.css"
 import Dg from "../../assets/dg.jpeg"
+import COD from "../../assets/aroune.jpeg"
 import Com from "../../assets/comunication.jfif"
 import Dev from "../../assets/develloppement.jfif"
 const Equipe = (props) => {
@@ -37,7 +38,7 @@ const Equipe = (props) => {
                 <div class="col-lg-3 col-md-6">
                     <div class="box">
                         <div class="image">
-                            <img src="https://i.ibb.co/JC4skS0/team-animate.jpg" alt="team" class="img-fluid"/>
+                            <img src={COD} alt="team" class="img-fluid"/>
                             <div class="social-icons">
                                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                                 
