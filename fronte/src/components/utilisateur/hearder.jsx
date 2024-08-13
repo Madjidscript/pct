@@ -70,7 +70,7 @@ const Hearder = (props) => {
                 className="nav-links"
                onClick={click ? handleClick : null}
               >
-                Reclamation client
+                Réclamations Clients
               </NavLink>
             </li>
             <li className="nav-item">

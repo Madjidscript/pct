@@ -61,7 +61,7 @@ const AdReclamationArtisan = (props) => {
         <div class="right-sides">
             <div className="center-contents">
             <div class="admin-containers">
-        <h1 style={{color:'black'}}>Réclamations Artisan</h1>
+        <h1 style={{color:'black'}}>Contact Artisan</h1>
         <div class="reclamation-containers">
              {
                 data.map((element,index)=>{

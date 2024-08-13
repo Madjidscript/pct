@@ -123,7 +123,7 @@ const AdEdit = (props) => {
                 
           
 
-            
+            <h2>Edit Admin</h2> 
        
 <div style={{color:"red",margin:"0px auto"}}>{message}</div>
  

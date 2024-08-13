@@ -80,6 +80,7 @@ const AdInscription = (props) => {
              </div>
              <div class="right-side">
             <div className="center-content">
+            <h2>Inscription Admin</h2>
             <form method='POST' className="form" onSubmit={handlsubmit} enctype="multipart/form-data" >
            
               <input type="text"  placeholder="Entrez votre nom" className="email" name='nom' value={formdata.nom} onChange={handlchange} required />

@@ -74,6 +74,7 @@ const Adpublicite = (props) => {
              </div>
              <div class="right-side">
             <div className="center-content">
+            <h2>Ajout Publicité</h2>
             <form method='POST' className="form" onSubmit={handlsubmit} enctype="multipart/form-data" >
            
               <input type="text"  placeholder="Entre votre nom" className="email" name='titre' value={formdata.titre} onChange={handlchange} required />
