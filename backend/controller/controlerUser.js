@@ -6,6 +6,9 @@ const path = require("path/win32");
 const otherReclamation1 = require("../other/reclamation1");
 const otherReclamation2 = require("../other/reclamation2");
 const multer = require("../middlewares/multer")
+const utapi = require("../middlewares/uploadthind");
+const { File } = require("node:buffer");
+
 
 const ControlerUser = class{
     static Inscription = async(req=request,res=response)=>{
@@ -14,7 +17,12 @@ const ControlerUser = class{
       const email = await req.body.email
       const utilisateur = await req.body.utilisateur
       const password = await req.body.password
-      const images= req.file.path
+      console.log("typefile : ", typeof req.file, req instanceof File);
+     const response = await utapi.uploadFiles(new File([req.file.buffer], "salut"));
+     if (response.error) {
+      console.log("error", response.error);
+     }
+     const images = response.data.url;
       const verifutilisateur = await otherArtisan.utilisateurParUsername(utilisateur)
       const verifmail = await otherArtisan.utilisateurParEmail(email)
       if(verifutilisateur){
@@ -88,14 +96,10 @@ const ControlerUser = class{
       message = "Compte désactivé";
       return res.status(403).json({ message });
      }
-      
         message="connexion reussit"
          console.log("mon data hoo",verifmail);
          res.status(200).json({verifmail,message})
         
-      
-      
-     
     }
 
     static AfficheArtisan = async (req=request,res=response)=>{
@@ -203,7 +207,12 @@ const ControlerUser = class{
       let message =""
       const id = req.params.id
       console.log("realisation artisan",req.body,"monimage")
-      const images= req.file.path
+      console.log("typefile : ", typeof req.file, req instanceof File);
+      const response = await utapi.uploadFiles(new File([req.file.buffer], "salut"));
+      if (response.error) {
+        console.log("error", response.error);
+      }
+      const images = response.data.url;
       const data = {
         ...req.body,
         image:images,
@@ -248,41 +257,16 @@ const ControlerUser = class{
       }
     }
     static edditer = async(req=request,res=response)=>{
-    //   const id = req.params.id;
-    //   console.log("mon id",id,"mon body",req.body)
-    //    const passwords = req.body.password;
-    //     const images = req.file.path;
-
-        
-    //     const hspass = await bcrypt.hash(passwords, 10);
-
-       
-    //     const data = {
-    //         ...req.body,
-    //       image:req.file.path,
-    //       password:hspass
-
-    //     }
-            
-
-       
-    //     const modif = await otherArtisan.update(id, data);
-
-    //     if (modif) {
-            
-    //         const message = 'Modification effectuée avec succès';
-    //         res.json({ message });
-    //     } else {
-           
-    //         const message = "Erreur de modification des données";
-    //         res.status(400).json({ message });
-    //     }
-    // } 
-
+   
 
     const id = req.params.id;
     console.log("mon id", id, "mon body", req.body);
-
+    console.log("typefile : ", typeof req.file, req instanceof File);
+    const response = await utapi.uploadFiles(new File([req.file.buffer], "salut"));
+    if (response.error) {
+      console.log("error", response.error);
+    }
+    const images = response.data.url;
     try {
         // Récupérer l'artisan existant depuis la base de données
         const artisan = await otherArtisan.utilisarteuParID(id);
@@ -303,7 +287,7 @@ const ControlerUser = class{
         // Construire les données à mettre à jour
         const data = {
             ...req.body,
-            image: req.file ? req.file.path : artisan.image, // Utiliser la nouvelle image ou l'image existante
+            image: images ? images : artisan.image, // Utiliser la nouvelle image ou l'image existante
             password: hspass, // Utiliser le mot de passe recrypté ou existant
         };
 

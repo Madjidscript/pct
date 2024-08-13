@@ -8,7 +8,7 @@ import "../utilisateur/css/galerie.css"
 import Seibar from "./seidbar";
 const AdGalerie = (props) => {
 
-    const domain ="https://pct.onrender.com/"
+    // const domain ="https://pct.onrender.com/"
     const [data,setdata]= useState([])
 
     useEffect(()=>{
@@ -70,7 +70,7 @@ const AdGalerie = (props) => {
         <div class="gallery">
             {
                 data.map((element,index)=>{
-                    const imageUrl = element.image ? (domain + element.image.replace(/\\/g, '/')) :logo;
+                    const imageUrl = element.image ??logo;
                     return(
                         <div key={index} class="gallery-item">
                         <img src={imageUrl} alt="Image 1"/>

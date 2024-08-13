@@ -17,10 +17,10 @@ const Sidebar = (props) => {
         const local = JSON.parse(localStorage.getItem("Admin"));
         
         if (local) {
-          console.log("aslam hooo", local.nom,"mon id hoo",local._id,"mon image",local.image.replace(/\\/g, '/'));
+          console.log("aslam hooo", local.nom,"mon id hoo",local._id,"mon image",local.image);
           setNom(local.nom);
           setid(local._id)
-          setimage(domain + local.image.replace(/\\/g, '/'))
+          setimage( local.image)
         }
       }, []);
       console.log("mon id",Nom,Id)
@@ -34,7 +34,7 @@ const Sidebar = (props) => {
         
         <>
         <div class="sidebars">
-        <h3 class="sidebar-logos"><img src={logo} alt="" style={{width:"35px",height:"35px",borderRadius:"50%"}} /></h3>
+        <h3 class="sidebar-logos"><img src={Image} alt="" style={{width:"35px",height:"35px",borderRadius:"50%"}} /></h3>
         {/* <button class="sidebar-toggle" aria-label="Toggle menu">
             <span class="toggle-icon"></span>
         </button> */}

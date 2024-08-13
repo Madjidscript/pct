@@ -134,7 +134,7 @@ const AdListArtisan = (props) => {
                     rechercheUser
                     .slice(0,15 )
                     .map((element,index)=>{
-                        const imageUrl = element.image ? (domain + element.image.replace(/\\/g, '/')) :logo;
+                        const imageUrl = element.image ??logo;
 
                         return(
                         <tr key={index}>

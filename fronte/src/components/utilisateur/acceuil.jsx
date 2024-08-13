@@ -49,12 +49,6 @@ const Acceuil = () => {
     Axios.get("/artisan")
       .then((response) => {
         setdata(response.data.Artisan);
-
-        //  const altitudes = response.data.Artisan.map((element) => element.altitude);
-        //   const longitudes = response.data.Artisan.map((element) => element.longitude);
-
-        //       setLatitudesArtisan(altitudes);
-        //       setLongitudesArtisan(longitudes);
       })
       .catch((error) => {
         console.log("mon eereur dans recherche Artisan Api", error);

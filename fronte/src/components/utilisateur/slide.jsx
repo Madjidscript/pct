@@ -23,7 +23,7 @@ const Slide = (props) => {
         <Carousel>
             {
                 data.map((element,index)=>{
-                    const imageUrl = element.image ? (domain + element.image.replace(/\\/g, '/')) :Image;
+                    const imageUrl = element.image ? ( element.image) :Image;
                     return(
                         <Carousel.Item id={index}>
                 <img

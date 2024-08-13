@@ -68,7 +68,7 @@ export default function Profils() {
               <div className="rounded-top text-white d-flex flex-row" >
                 <div className="ms-4 mt-5 d-flex flex-column" style={{ width: '150px' }}>
                { data  && <MDBCardImage
-                    src={domain + data.image.replace(/\\/g, '/')}
+                    src={ data.image}
                     alt="Generic placeholder image"
                     className="mt-4 mb-2  img-thumbnail"
                     fluid
@@ -145,7 +145,7 @@ export default function Profils() {
                    <div key={index} className="image-item">
                      <button className="button-top"onClick={()=>handleDeleteRealisation(element._id)} > <i class="fas fa-trash-alt delete-icon"></i></button>
                     <img
-                    src={domain + element.image.replace(/\\/g, '/')}
+                    src={ element.image}
                     alt={`Image ${index + 1}`}  
                  />
                </div>
