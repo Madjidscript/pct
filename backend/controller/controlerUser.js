@@ -7,6 +7,7 @@ const otherReclamation1 = require("../other/reclamation1");
 const otherReclamation2 = require("../other/reclamation2");
 const multer = require("../middlewares/multer")
 const utapi = require("../middlewares/uploadthind");
+const { mailer } = require('../middlewares/mailer')
 const { File } = require("node:buffer");
 
 
@@ -81,6 +82,7 @@ const ControlerUser = class{
       
      }
     }
+
     static Oublier= async (req=request,res=response)=>{
       let message =""
      console.log("ma connexion",req.body)
@@ -90,16 +92,66 @@ const ControlerUser = class{
     //  console.log("monn verifmail",verifmail.statut)
      if (!verifmail) {
       message="email incorrect"
-      res.status(400).json(message)
+      return res.status(400).json(message)
      } 
      if (!verifmail.statut) {
       message = "Compte désactivé";
       return res.status(403).json({ message });
      }
-        message="connexion reussit"
-         console.log("mon data hoo",verifmail);
-         res.status(200).json({verifmail,message})
-        
+     if(verifmail){
+      mailer(verifmail.email,verifmail.nom,verifmail._id)
+      const mail = mailer
+      if(mail){
+        message="Verifier votre boite mail ?"
+        console.log("mon data hoo",mail);
+       return res.status(200).json({verifmail,message})
+      }
+     }
+    
+         
+    }
+
+    static Oublier2= async (req=request,res=response)=>{
+
+     console.log("ma connexion",req.body)
+     const id = req.params.id
+     
+     try {
+      // Récupérer l'artisan existant depuis la base de données
+      const artisan = await otherArtisan.utilisarteuParID(id);
+
+      if (!artisan) {
+          return res.status(404).json({ message: "Artisan non trouvé" });
+      }
+
+      // Vérifier si le champ 'password' est modifié
+      let passwords = req.body.password;
+      let hspass = artisan.password; // Utiliser le mot de passe existant par défaut
+
+      if (passwords && passwords !== artisan.password) {
+          // Recrypter le nouveau mot de passe s'il est modifié
+          hspass = await bcrypt.hash(passwords, 10);
+      }
+
+      // Construire les données à mettre à jour
+      const data = {
+          password: hspass, // Utiliser le mot de passe recrypté ou existant
+      };
+
+      // Effectuer la mise à jour
+      const modif = await otherArtisan.update(id, data);
+
+      if (modif) {
+          const message = 'Modification de mot pass   effectuée avec succès';
+          res.json({ message });
+      } else {
+          const message = "Erreur de modification des données";
+          res.status(400).json({ message });
+      }
+     } catch (error) {
+      console.error("Erreur lors de la modification", error);
+      res.status(500).json({ message: "Erreur interne du serveur" });
+     }
     }
 
     static AfficheArtisan = async (req=request,res=response)=>{

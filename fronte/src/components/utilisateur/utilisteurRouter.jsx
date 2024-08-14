@@ -8,7 +8,9 @@ import Error from "../utils/erors"
 import Inscription from './inscription';
 import Profil from './profil2';
 import Oublier from "./pswdoublier"
+import Oublier2 from "./pswdoublier2"
 import Learning from "./learning"
+
 import {Route,Routes  } from "react-router-dom";
 const UtilisatruRouter = (props) => {
     return (
@@ -23,6 +25,7 @@ const UtilisatruRouter = (props) => {
                 <Route path='connexion2' element= {<Connexion2/>} />
                 <Route path='contact' element= {<Contact/>} />
                 <Route path='profil/:id' element= {<Profil/>} />
+                <Route path='modifpass/:id' element= {<Oublier2/>} />
                 <Route path='inscription' element= {<Inscription/>} />
                 <Route path='*' element= {<Error/>} />
             </Routes>

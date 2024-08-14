@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import "./css/connexion.css";
-import {  NavLink,useNavigate} from "react-router-dom";
+import {  NavLink,useNavigate,useParams} from "react-router-dom";
 import Axios from '../../service/apiService';
 import { LocalService } from "../../service/local";
 import { toast,Toaster } from 'react-hot-toast';
 
-const Pswdoublier = (props) => {
+const Pswdoublier2 = (props) => {
     const navigate = useNavigate()
     const [messages,setmessage]= useState()
     const [data,setdata]=useState()
+    const { id } = useParams();
     console.log("mon data .......",data)
 
     // useEffect(()=>{
@@ -20,8 +21,8 @@ const Pswdoublier = (props) => {
 
     //     }
     // })
-   // useEffect(() => {
-       // const local = JSON.parse(localStorage.getItem("Artisan"));
+    // useEffect(() => {
+    //     const local = JSON.parse(localStorage.getItem("Artisan"));
         
     //     if (local) {
     //       console.log("aslam hooo", local.nom,"mon id hoo",local._id);
@@ -31,7 +32,7 @@ const Pswdoublier = (props) => {
     //   }, []);
    
     const [formdata,setformdata]=useState({
-        email:"",
+        password:"",
        
     })
     const handlchange = (e)=>{
@@ -44,7 +45,7 @@ const Pswdoublier = (props) => {
             e.preventDefault()
 
             console.log("les donner du formulaire",formdata)
-            Axios.post("/oublier",formdata)
+            Axios.post(`/modifpass/${id}`,formdata)
             .then((response)=>{
                 console.log("m a reponse lors de la connexion",response.data.message,"mon objet",response.data.verifmail)
                 setmessage(response.data.message)
@@ -62,19 +63,16 @@ const Pswdoublier = (props) => {
                 }
                 const info = response.data.verifmail
                 const ids = info._id
-                // const nom = info.nom
-                // const lien = navigate(`/modifpass/${ids}`)
                 
                 console.log("mon info", info);
                 if (info && info !== undefined) {
-                   // const donner = JSON.stringify(response.data.verifmail)
+                    // const donner = JSON.stringify(response.data.verifmail)
                     console.log("mes doner lor de la connexion",info,"monid depuis la connexion",ids)
-                   // LocalService.savelocal(donner)
-
-                    // const emailAddress = formdata.email; 
-                    // setTimeout(() => {
-                    // window.location.href = `mailto:${emailAddress}?subject=Réinitialisation du mot de passe&body=Bonjour,${nom} Vous avez demandé la réinitialisation de votre mot de passe. Pour le faire, veuillez suivre le lien suivant:${lien} ACordialement,E-artisans`;
-                    // }, 3000);
+                    // LocalService.savelocal(donner)
+                    setTimeout(() => {
+                        console.log("Fonction exécutée après 3 secondes");
+                        navigate(`/connexion`);
+                    }, 3000);
                     
                 } else {
                     navigate("/oublier")
@@ -106,12 +104,12 @@ const Pswdoublier = (props) => {
 
             
         <div className="login_register">
-            <NavLink to="/connexion" className="login" >Verification</NavLink>
+            <NavLink to="/connexion" className="login" >connexion</NavLink>
             <NavLink to="/" className="registers"   >Acceuil</NavLink>
         </div>
          
         <form method='POST' className="form" onSubmit={handlsubmit}>
-            <input type="email"  placeholder="Email Adress" className="email" name='email' value={formdata.email} onChange={handlchange} required />
+            <input type="password"  placeholder="Email Adress" className="email" name='password' value={formdata.password} onChange={handlchange} required />
            
             <button className="login_btn">Soumettre</button>
         </form>
@@ -124,4 +122,4 @@ const Pswdoublier = (props) => {
     );
 };
     
-export default Pswdoublier;
+export default Pswdoublier2;

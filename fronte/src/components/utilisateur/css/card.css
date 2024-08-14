@@ -38,8 +38,10 @@
     background-color: #fff;
     border: none;
     border-radius: 25px;
-    width: 80px;
+    width: auto;
     height: 80px;
+    padding:2px;
+    text-decoration:none;
     font-size: 20px;
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
