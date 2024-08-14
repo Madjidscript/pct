@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const upload = require("../middlewares/multer")
+const uploads = require("../middlewares/multer2")
 const ControlerUser = require("../controller/controlerUser")
 const bcrypt = require("bcryptjs")
 const otherArtisan = require('../other/artisan');
@@ -8,7 +9,7 @@ const path = require("path/win32");
 
 
 /* GET users listing. */
-router.post("/inscription",upload.single("image"),ControlerUser.Inscription)
+router.post("/inscription",uploads.single("image"), ControlerUser.Inscription)
 router.post("/connexion",ControlerUser.Connexion)
 router.post("/oublier",ControlerUser.Oublier)
 router.post("/reclamation1",ControlerUser.Reclamation1)
@@ -18,11 +19,11 @@ router.get("/reclamation2",ControlerUser.GetReclamation2)
 router.get("/artisan",ControlerUser.AfficheArtisan)
 router.get("/artisan2/:metier",ControlerUser.AfficheArtisan2)
 router.get("/artisanid/:id",ControlerUser.AfficheArtisanId)
-router.post("/realisation/:id",upload.single("image"),ControlerUser.RealisationArtisan)
+router.post("/realisation/:id",uploads.single("image"), ControlerUser.RealisationArtisan)
 router.get("/realisation/:id",ControlerUser.getRealisaton)
 router.delete("/supp/:id",ControlerUser.supp)
-router.post("/papa/:id",upload.single("image"),ControlerUser.edditer)
-// router.post("/papa/:id",upload.single("image"),async(req,res)=>{
+router.post("/papa/:id",uploads.single("image"), ControlerUser.edditer)
+// router.post("/papa/:id", async(req,res)=>{
 //     console.log("mon id",req.params.id)
 //     console.log("req.body",req.body)
 //     const id =req.params.id

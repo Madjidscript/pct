@@ -8,7 +8,7 @@ const bcrypt = require("bcryptjs");
 const path = require("path/win32");
 const XLSX = require("xlsx");
 const crypto = require("crypto");
- const imagess = "https://fr.freepik.com/vecteurs-libre/homme-chemise-rouge-collier-blanc_226744976.htm#query=avatar%20profil&position=10&from_view=keyword&track=ais_hybrid&uuid=bf4da64b-784a-4096-b826-56fe4d8becc6";
+ const imagess = "https://utfs.io/f/09002aae-baa5-4860-87fc-5e4502ffcc49-1t0kxp";
 const utapi = require("../middlewares/uploadthind");
 const { File } = require("node:buffer");
 
@@ -244,7 +244,13 @@ const ControlerAdmin = class {
 
   static fichier = async (req = request, res = response) => {
     
-
+    // console.log("typefile : ", typeof req.file, req instanceof File);
+    // const response = await utapi.uploadFiles(new File([req.file.buffer], "salut"));
+    // if (response.error) {
+    //   console.log("error", response.error);
+    // }
+    //const images = response.data.url;
+    // console.log("levrai imagessss", images);
 
     const generatePassword = () => crypto.randomBytes(8).toString("hex");
     const generateUsername = (name) =>
