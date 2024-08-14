@@ -35,7 +35,7 @@ function Card({
         <div className="card-header" style={{ backgroundColor }}>
           {imgSrc && (
             <img
-              src={domain + imgSrc.replace(/\\/g, "/")}
+              src={imgSrc}
               style={{ width: "100%" }}
               alt={title}
             />

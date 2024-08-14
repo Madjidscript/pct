@@ -34,7 +34,8 @@ const Sidebar = (props) => {
         
         <>
         <div class="sidebars">
-        <h3 class="sidebar-logos"><img src={Image} alt="" style={{width:"35px",height:"35px",borderRadius:"50%"}} /></h3>
+        <h3 class="sidebar-logos" ><img src={Image} alt="" style={{width:"45px",height:"45px",borderRadius:"50%",}} /></h3>
+        <h3 class="sidebar-logos" > {Nom} </h3>
         {/* <button class="sidebar-toggle" aria-label="Toggle menu">
             <span class="toggle-icon"></span>
         </button> */}
@@ -62,6 +63,10 @@ const Sidebar = (props) => {
             <a href="/admin/liste" class="sidebar-items">
                 <span class="sidebar-icons">&#128203;</span> 
                 <span class="sidebar-titles">Liste Artisans</span>
+            </a>
+            <a href="/admin/carte" class="sidebar-items">
+            <span style={{ fontSize: '20px' }}>🗺️</span> 
+                <span class="sidebar-titles">Liste Artisans Sur La Carte</span>
             </a>
         </nav>
         <div className="sidebar-footers">

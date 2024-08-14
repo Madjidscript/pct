@@ -10,6 +10,7 @@ import Galerie from "./galerie"
 import Error from "../utils/erors"
 import Edit from "./edit";
 import Fichier from './fichier'
+import Carte from "./carte"
 const AdminRouter = (props) => {
     return (
         
@@ -25,6 +26,7 @@ const AdminRouter = (props) => {
             <Route path='/fichier' element={<Fichier/>}></Route>
             <Route path='/client' element={<ReclClient/>}></Route>
             <Route path='/artisan' element= {<ReclArtisant/>}></Route>
+            <Route path='/carte' element= {<Carte/>}></Route>
             <Route path='*' element={<Error/>}></Route>
         </Routes>
         </>
