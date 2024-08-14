@@ -41,7 +41,7 @@ function Card({
             />
           )}
           <a href={`/profil/${id}`} className="add-btn">
-            i 
+            voir profil
           </a>
         </div>
         <div className="card-body">
@@ -57,7 +57,7 @@ function Card({
           </div>
           <p><span>Distance</span> <span className="discounted-price">{distance}</span></p>
           <a href={`tel:${phoneNumber}`} className="cart-btn">
-            Contactez-moi
+            Contactez l'Artisan
           </a>
           {/* <div className="card-icons">
                 <button className="icon-btn">❤</button>
