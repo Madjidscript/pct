@@ -21,7 +21,7 @@ exports.mailer = (email,nom,id)=>{
 
 Cher/Chère <strong>${nom}<strong/>,
 
-Vous avez demandé la réinitialisation de votre mot de passe. Pour le faire, veuillez suivre le lien suivant:"https://pct.onrender.com/modifpass/${id}"
+Vous avez demandé la réinitialisation de votre mot de passe. Pour le faire, veuillez suivre le lien suivant:" https://pct-theta.vercel.app/modifpass/${id}"
 
 Cordialement,
 <strong>E-artisans<strong/>
