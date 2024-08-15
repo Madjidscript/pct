@@ -9,9 +9,9 @@
     align-items: center; 
 }
 
-/* Media queries pour les écrans plus petits */
+
 @media (max-width: 767px) {
     .carousel-item img {
-        height: 300px; /* Ajuste la hauteur pour les petits écrans */
+        height: 300px; 
     }
 }

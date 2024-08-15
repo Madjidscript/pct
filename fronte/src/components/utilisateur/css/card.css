@@ -35,7 +35,7 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: red;
+    background: linear-gradient(to right,#FF4E00,#FF9600);
     color:white;
     border: none;
     border-radius: 25px;
@@ -43,7 +43,7 @@
     height: 40px;
     padding:10px;
     text-decoration:none;
-    font-size: 20px;
+    font-size: 15px;
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     display: flex;

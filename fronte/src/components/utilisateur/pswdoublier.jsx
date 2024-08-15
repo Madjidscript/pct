@@ -9,7 +9,7 @@ const Pswdoublier = (props) => {
     const navigate = useNavigate()
     const [messages,setmessage]= useState()
     const [data,setdata]=useState()
-    console.log("mon data .......",data)
+    
 
     
    
