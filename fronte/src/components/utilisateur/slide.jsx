@@ -3,6 +3,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import Image from '../../assets/imageArti.jpg'; // Assurez-vous que ce chemin d'accès est correct
 import {useState,useEffect} from "react"
 import Axios from '../../service/apiService';
+import "./css/slide.css"
 const Slide = (props) => {
      const domain ="https://pct.onrender.com/" 
      //http://localhost:3000/
@@ -29,8 +30,8 @@ const Slide = (props) => {
                 <img
                     className="d-block w-100" 
                     src={imageUrl}
-                    alt="First slide"
-                    style={{ height: '500px', width: '100%', objectFit: 'cover',backgroundSize:"cover"}}
+                    alt={`Slide ${index}`}
+                    style={{ height: 'auto',objectFit: 'cover' }}
                 />
                 <Carousel.Caption>
                     

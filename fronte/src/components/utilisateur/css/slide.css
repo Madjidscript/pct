@@ -1,0 +1,17 @@
+.carousel-item img {
+    width: 100%; 
+    height: auto; 
+    object-fit: cover; 
+
+.carousel-item {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+/* Media queries pour les écrans plus petits */
+@media (max-width: 767px) {
+    .carousel-item img {
+        height: 300px; /* Ajuste la hauteur pour les petits écrans */
+    }
+}
