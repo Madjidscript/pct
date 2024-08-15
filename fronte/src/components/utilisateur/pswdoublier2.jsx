@@ -100,7 +100,7 @@ const Pswdoublier2 = (props) => {
         <>
         <Toaster/>
         <div className="cardss">
-        <h2>Conexion</h2>
+        <h2>Edit mot pass</h2>
 
             
         <div className="login_register">
@@ -109,6 +109,7 @@ const Pswdoublier2 = (props) => {
         </div>
          
         <form method='POST' className="form" onSubmit={handlsubmit}>
+              {messages}
             <input type="password"  placeholder="Email Adress" className="email" name='password' value={formdata.password} onChange={handlchange} required />
            
             <button className="login_btn">Soumettre</button>

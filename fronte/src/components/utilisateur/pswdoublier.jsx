@@ -11,24 +11,7 @@ const Pswdoublier = (props) => {
     const [data,setdata]=useState()
     console.log("mon data .......",data)
 
-    // useEffect(()=>{
-    //     if (LocalService.local()) {
-    //         const local = JSON.parse(localStorage.getItem("Artisan"));
-    //         setid(local._id)
-    //         console.log("veriffffff",id)
-    //         return navigate(`/artisan/profil/${id}`)
-
-    //     }
-    // })
-   // useEffect(() => {
-       // const local = JSON.parse(localStorage.getItem("Artisan"));
-        
-    //     if (local) {
-    //       console.log("aslam hooo", local.nom,"mon id hoo",local._id);
-          
-    //       return navigate(`/artisan/profil/${local._id}`)
-    //     }
-    //   }, []);
+    
    
     const [formdata,setformdata]=useState({
         email:"",
@@ -102,7 +85,7 @@ const Pswdoublier = (props) => {
         <>
         <Toaster/>
         <div className="cardss">
-        <h2>Conexion</h2>
+        <h2>Verification mail</h2>
 
             
         <div className="login_register">
@@ -111,6 +94,7 @@ const Pswdoublier = (props) => {
         </div>
          
         <form method='POST' className="form" onSubmit={handlsubmit}>
+            {messages}
             <input type="email"  placeholder="Email Adress" className="email" name='email' value={formdata.email} onChange={handlchange} required />
            
             <button className="login_btn">Soumettre</button>
