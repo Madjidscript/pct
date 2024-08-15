@@ -154,7 +154,7 @@ const Acceuil = () => {
       <Header />
       {/* <RechercheAcceuil1 openModal={openModal} /> */}
       <section className="hero">
-        <h1 className="txt">Retrouvez un artisan Chap Chap</h1>
+        <h1 className="txt">Retrouvez Un Artisan Chap Chap</h1>
         <p style={{ color: "red" }}> {message} </p>
         <div className="search-bar">
           <form className="search-input">

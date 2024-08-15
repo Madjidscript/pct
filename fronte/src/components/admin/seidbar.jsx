@@ -84,10 +84,7 @@ const Sidebar = (props) => {
                     </a>
                 </div>
     </div>
-    {/* <div class="main-content">
-        <h1>Bienvenue dans l'Application</h1>
-        <p>Contenu principal ici</p>
-    </div> */}
+    
         </>
     );
 };
