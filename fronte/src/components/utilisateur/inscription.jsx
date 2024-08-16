@@ -257,6 +257,7 @@ if (!phoneRegex.test(formdata.whathsapp)) {
 
         <div className="cards">
         <h2>Inscription Artisan</h2>
+        NB: <strong>Etre dans votre lieu de travaille pour vous inscrit</strong>
 
         {/* {erro && <p style={{ color: 'red' }}>{erro}</p>}
         {error && <p style={{ color: 'red' }}>{error}</p>}

@@ -143,6 +143,7 @@ const Edit = (props) => {
 
             <div className="cards">
                 <h2>Edition Artisan</h2>
+                NB: <strong>Etre dans votre lieu de travaille pour editer votre profil </strong>
 
                 <div className="login_register">
                     <NavLink to={`/artisan/edit/${id}`} className="register">Editer</NavLink>
