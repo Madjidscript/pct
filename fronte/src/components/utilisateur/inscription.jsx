@@ -258,9 +258,9 @@ if (!phoneRegex.test(formdata.whathsapp)) {
         <div className="cards">
         <h2>Inscription Artisan</h2>
 
-        {erro && <p style={{ color: 'red' }}>{erro}</p>}
+        {/* {erro && <p style={{ color: 'red' }}>{erro}</p>}
         {error && <p style={{ color: 'red' }}>{error}</p>}
-        {errors && <p style={{ color: 'red' }}>{errors}</p>}
+        {errors && <p style={{ color: 'red' }}>{errors}</p>} */}
         <div className="login_register">
         <NavLink to="/inscription" className="register" >S'inscrit</NavLink>
             <NavLink to="/connexion" className="logins" >Se connecter</NavLink>
