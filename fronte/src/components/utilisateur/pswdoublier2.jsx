@@ -104,7 +104,7 @@ const Pswdoublier2 = (props) => {
 
             
         <div className="login_register">
-            <NavLink to="/connexion" className="login" >connexion</NavLink>
+            <NavLink to="/connexion" className="login" >Connexion</NavLink>
             <NavLink to="/" className="registers"   >Acceuil</NavLink>
         </div>
          

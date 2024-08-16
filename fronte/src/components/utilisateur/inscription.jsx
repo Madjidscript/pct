@@ -328,6 +328,10 @@ if (!phoneRegex.test(formdata.whathsapp)) {
             
             
             <button className="login_btn">inscription</button>
+
+            {erro && <p style={{ color: 'red' }}>{erro}</p>}
+            {error && <p style={{ color: 'red' }}>{error}</p>}
+            {errors && <p style={{ color: 'red' }}>{errors}</p>}
         </form>
 
         <div className="footer_card">
