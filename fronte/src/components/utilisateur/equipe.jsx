@@ -15,7 +15,7 @@ const Equipe = (props) => {
            <p className="testo">Notre Equipe</p>
            <p className="testo">Notre Equipe</p>
          </div>
-            <p>Notre équipe dynamique réunit des développeurs innovants, des designers créatifs, des experts en communication, des marketeurs stratégiques, un directeur général visionnaire et des coordinateurs efficaces. Ensemble, nous transformons 
+            <p>Notre équipe dynamique réunit des développeurs innovants, des designers créatifs, des experts en communication, des marketeurs stratégiques, une directrice générale visionnaire et des coordinateurs efficaces. Ensemble, nous transformons 
             des idées en projets réussis grâce à une collaboration fluide et une expertise diversifiée.</p>
             <div class="row">
                 
@@ -24,14 +24,14 @@ const Equipe = (props) => {
                         <div class="image">
                             <img src={Dg} alt="team" class="img-fluid"/>
                             <div class="social-icons">
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                
-                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                {/* <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a> */}
+                                 <h4>Directrice Générale</h4>
                             </div>
                             <div class="overlay"></div>
                         </div>
                         <h3>TAHIBET LAETITIA ANELIA</h3>
-                        <h4>Directrice Generale</h4>
+                        <h4>Directrice Générale</h4>
                     </div>
                 </div>
               
@@ -40,9 +40,10 @@ const Equipe = (props) => {
                         <div class="image">
                             <img src={COD} alt="team" class="img-fluid"/>
                             <div class="social-icons">
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                
-                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                {/* <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a> */}
+                                 <h4>Coordinateur</h4>
+
                             </div>
                             <div class="overlay"></div>
                         </div>
@@ -56,14 +57,14 @@ const Equipe = (props) => {
                         <div class="image">
                             <img src={Dev} alt="team" class="img-fluid"/>
                             <div class="social-icons">
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                
-                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                {/* <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a> */}
+                                <h4>Directeur Service Dévelloppement</h4>
                             </div>
                             <div class="overlay"></div>
                         </div>
                         <h3>BALLEY SOLQUEFLO</h3>
-                        <h4>Directeur Service Develloppement</h4>
+                        <h4>Directeur Service Dévelloppement</h4>
                     </div>
                 </div>
                
@@ -72,14 +73,14 @@ const Equipe = (props) => {
                         <div class="image">
                             <img src={Com} alt="team" class="img-fluid"/>
                             <div class="social-icons">
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                
-                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                {/* <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a> */}
+                                 <h4>Chef Services Communication</h4>
                             </div>
                             <div class="overlay"></div>
                         </div>
                         <h3>KOFFI YEVOU JEAN MARC</h3>
-                        <h4>Chef Servies Communication</h4>
+                        <h4>Chef Services Communication</h4>
                     </div>
                 </div>
             </div>
