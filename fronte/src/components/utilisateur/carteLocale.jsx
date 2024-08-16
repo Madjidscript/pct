@@ -3,10 +3,18 @@
 import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import axios from 'axios';
+import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 const LocalisationMap = ({ latitude, longitude }) => {
     const [places, setPlaces] = useState([]);
+
+    const customIcon = new L.Icon({
+        iconUrl: 'https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/images/marker-icon.png', // Remplacez par l'URL de votre icône
+        iconSize: [32, 32], // Taille de l'icône (largeur, hauteur)
+        iconAnchor: [16, 32], // Point de l'icône qui correspond à la position du marqueur
+        popupAnchor: [0, -32] // Point de l'icône où le popup doit apparaître
+    });
 
     useEffect(() => {
         const fetchData = async () => {
@@ -35,14 +43,14 @@ const LocalisationMap = ({ latitude, longitude }) => {
                 attribution='&copy; OpenStreetMap contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <Marker position={position}>
+            {/* <Marker position={position}>
                 <Popup>
                     Ta localisation
                 </Popup>
-            </Marker>
+            </Marker> */}
 
             {places.map((place, index) => (
-                <Marker key={index} position={position}>
+                <Marker key={index} position={position}  icon={customIcon}>
                     <Popup>Ma position est {place}</Popup>
                 </Marker>
             ))}
