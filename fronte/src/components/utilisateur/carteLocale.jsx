@@ -33,8 +33,7 @@ const LocalisationMap = ({ latitude, longitude }) => {
         <MapContainer center={position2} zoom={6} style={{ height: '400px', width: '100%' }}>
             <TileLayer
                 attribution='&copy; OpenStreetMap contributors'
-                url="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/images/marker-icon.png"
-                // https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png 
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <Marker position={position}>
                 <Popup>
