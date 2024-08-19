@@ -105,7 +105,7 @@ const Contact = (props) => {
 
 
         <div className="cards" style={{marginTop:"70px"}} >
-        <h2>Reclamation Du Client</h2>
+        <h2>Avis Clients</h2>
         {error && <p style={{ color: 'red' }}>{error}</p>}
         {errors && <p style={{ color: 'red' }}>{errors}</p>}
         <form method='POST' className="form" onSubmit={handlsubmit}>
@@ -128,7 +128,7 @@ const Contact = (props) => {
               <textarea name="message" className="email" value={formdata.message} onChange={handlchange} id=""></textarea>
            </div>
             
-            <button className="login_btn">Validez la Reclamation</button>
+            <button className="login_btn">Soumettre</button>
         </form>
 
         <div className="footer_card">

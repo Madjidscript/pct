@@ -110,7 +110,7 @@ export default function Profils() {
             <strong>Commune:</strong> {data && data.comune}
           </MDBCardText>
           <MDBCardText className="font-italic pp" style={{ color:'black'}}>
-            <strong>WhatsApp:</strong> {data && data.whathsapp}
+            <strong>WhatsApp:</strong> {data && data.tel}
           </MDBCardText>
           <MDBCardText className="font-italic pp" style={{ color:'black'}}>
             <strong>Nom de l'entreprise:</strong> {data && data.entreprise}

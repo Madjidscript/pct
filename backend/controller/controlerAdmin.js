@@ -244,19 +244,22 @@ const ControlerAdmin = class {
 
   static fichier = async (req = request, res = response) => {
     
-    // console.log("typefile : ", typeof req.file, req instanceof File);
-    // const response = await utapi.uploadFiles(new File([req.file.buffer], "salut"));
-    // if (response.error) {
-    //   console.log("error", response.error);
-    // }
-    //const images = response.data.url;
-    // console.log("levrai imagessss", images);
+   
 
     const generatePassword = () => crypto.randomBytes(8).toString("hex");
     const generateUsername = (name) =>
       name
         ? name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
         : "DefaultUser";
+
+        // Fonction pour extraire les heures d'ouverture et de fermeture
+        function extractHours(hourString) {
+          if (!hourString) return { ouverture: "", fermeture: "" };
+          // Nettoyer la chaîne pour enlever les préfixes et espaces superflus
+          const cleanedHourString = hourString.replace(/^\d+\.\s*/, '');
+          const [ouverture, fermeture] = cleanedHourString.split('-').map(s => s.trim());
+          return { ouverture, fermeture };
+        }
 
     try {
       const workbook = XLSX.readFile(req.file.path);
@@ -303,10 +306,11 @@ const ControlerAdmin = class {
         const heureValue = heure === "Autre (Préciser)" ? heure2 : heure;
         const entreprises = `${nom} ${cleanString(metier)} `;
         const tels = tel ? `+225 0${tel}` : "pas de numero telephone";
-        const what = whathsapps
-          ? `+225 0${whathsapps}`
+        const what = whathsapps ? `+225 0${whathsapps}`
           : "pas connecter sur whatsapp";
         const met = cleanString(metier).trim();
+
+        const { ouverture, fermeture } = extractHours(heureValue);
         // Créer un nouvel utilisateur
         const data2 = {
           nom,
@@ -322,8 +326,8 @@ const ControlerAdmin = class {
           tel: tels,
           whatsapp: what, // Corriger la faute de frappe
           altitude: latitude || 0, // Assurez-vous que 'latitude' est défini ou mettez une valeur par défaut
-          ouverture: cleanString(heureValue),
-          fermeture: cleanString(heureValue),
+          ouverture,
+          fermeture,
           image: imagess,
           utilisateur: nomUtilisateur,
           statut: true,
