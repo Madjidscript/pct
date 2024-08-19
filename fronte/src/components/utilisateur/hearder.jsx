@@ -3,7 +3,7 @@ import {  useState} from "react";
 import {  NavLink} from "react-router-dom";
 //import '@fortawesome/fontawesome-free/css/all.css';
 import "./css/hearder.css"
-import Logo from "../../assets/logo.svg"
+import Logo from "../../assets/log1.png"
 
 
 
@@ -70,7 +70,7 @@ const Hearder = (props) => {
                 className="nav-links"
                onClick={click ? handleClick : null}
               >
-                Réclamations Clients
+                Avis Clients
               </NavLink>
             </li>
             <li className="nav-item">

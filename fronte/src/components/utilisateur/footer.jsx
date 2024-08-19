@@ -1,5 +1,6 @@
 import React from 'react';
 import "./css/footer.css";
+import Logo from "../../assets/log2.svg"
 
 const Footer = (props) => {
     return (
@@ -9,8 +10,8 @@ const Footer = (props) => {
     <div className="content">
       <div className="top">
         <div className="logo-details">
-          <i className="fab fa-slack"></i>
-          <span className="logo_name">E-artisans</span>
+          {/* <i className="fab fa-slack"></i> */}
+          <span className="logo_name"><img src={Logo} alt="" className='logo'/></span>
         </div>
         <div className="media-icons">
           <a href="https://www.facebook.com/profile.php?id=61561429833836"><i className="fab fa-facebook-f"></i></a>

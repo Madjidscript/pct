@@ -23,7 +23,7 @@ const Learning = (props) => {
       <h2>Vidéo Tutoriel</h2>
       <div className="video-container">
         <iframe
-          src="https://www.youtube.com/embed/VIDEO_ID"
+          src="https://www.youtube.com/embed/c9UzIr11HH4"
           frameborder="0"
           allowfullscreen
         ></iframe>
@@ -34,7 +34,7 @@ const Learning = (props) => {
         <h3>1. Parcourir les Artisans</h3>
         <p>
           Utilisez notre moteur de recherche pour trouver des artisans par
-          catégorie ou par localisation.
+          catégorie .
         </p>
         <h3>2. Contacter un Artisan</h3>
         <p>

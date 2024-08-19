@@ -4,7 +4,7 @@ import {  NavLink ,useNavigate} from "react-router-dom";
 //import '@fortawesome/fontawesome-free/css/all.css';
 import { LocalService } from "../../service/local";
 import "./css/hearder.css"
-import Logo from "../../assets/logo.svg"
+import Logo from "../../assets/log2.svg"
 
 
 
