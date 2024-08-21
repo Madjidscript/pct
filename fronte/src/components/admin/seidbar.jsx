@@ -54,7 +54,7 @@ const Sidebar = (props) => {
             </a>
             <a href="/admin/client" class="sidebar-items">
                 <span class="sidebar-icons">&#128172;</span> 
-                <span class="sidebar-titles">Réclamation Client</span>
+                <span class="sidebar-titles">Avis Client</span>
             </a>
             <a href="/admin/artisan" class="sidebar-items">
                 <span class="sidebar-icons">&#128172;</span> 
@@ -66,7 +66,7 @@ const Sidebar = (props) => {
             </a>
             <a href="/admin/carte" class="sidebar-items">
             <span style={{ fontSize: '20px' }}>🗺️</span> 
-                <span class="sidebar-titles">Liste Artisans Sur La Carte</span>
+                <span class="sidebar-titles">Artisans Sur La Carte</span>
             </a>
         </nav>
         <div className="sidebar-footers">

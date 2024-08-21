@@ -76,7 +76,7 @@ const AdReclamationArtisan = (props) => {
                 <i className="fas fa-cogs"></i> En cours de traitement
                 </button>
                 <div class="reclamation-contents">
-                    <h3 class="reclamation-names" style={{marginTop:"35px"}}>Date de reclamation: <span>{element.date}</span>  </h3>
+                    <h3 class="reclamation-names" style={{marginTop:"35px"}}>Date: <span>{element.date}</span>  </h3>
                     <h3 class="reclamation-names">Nom Artisan: <span>{element.nomArtisan}</span>  </h3>
                     <p class="reclamation-messages"> Message: <span>{element.message}</span> </p>
                     <h3 class="reclamation-names"> numero Artisan: <span>{element.numArtisan}</span> </h3>

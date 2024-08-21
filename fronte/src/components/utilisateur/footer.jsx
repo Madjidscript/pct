@@ -23,17 +23,15 @@ const Footer = (props) => {
       <div className="link-boxes">
         <ul class="box">
           <li class="link_name">lien rapide</li>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">About us</a></li>
-          <li><a href="#">Get started</a></li>
+          <li><a href="/">acceuil</a></li>
+          <li><a href="/apropos">apropos</a></li>
+          <li><a href="/learning">Comment ça marche</a></li>
         </ul>
        
         <ul class="box">
           <li class="link_name">Compte</li>
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Inscription Artisan</a></li>
-          <li><a href="#">Connexion Artisan</a></li>
+          <li><a href="/inscription">Inscription Artisan</a></li>
+          <li><a href="/connexion">Connexion Artisan</a></li>
         </ul>
         <ul class="box">
           <li class="link_name">Contact </li>
