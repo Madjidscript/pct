@@ -41,7 +41,7 @@ const Edit = (props) => {
                     nom: artisanData.nom,
                     entreprise: artisanData.entreprise,
                     tel: artisanData.tel,
-                    whathsapp: artisanData.whathsapp,
+                    whathsapp: artisanData.tel,
                     email: artisanData.email,
                     password: artisanData.password,
                     longitude: artisanData.longitude,
@@ -156,8 +156,8 @@ const Edit = (props) => {
                         <input type="text" placeholder="Nom de l'entreprise ou atelier" className="email" name='entreprise' value={formdata.entreprise} onChange={handlchange} required />
                     </div>
                     <div className="inputCard">
-                        <input type="number" placeholder="Entrez votre numéro" className="email" name='tel' value={formdata.tel} onChange={handlchange} required />
-                        <input type="number" placeholder="Numéro WhatsApp" className="email" name='whathsapp' value={formdata.whathsapp} onChange={handlchange} required />
+                        <input type="text" placeholder="Entrez votre numéro" className="email" name='tel' value={formdata.tel} onChange={handlchange} required />
+                        <input type="text" placeholder="Numéro WhatsApp" className="email" name='whathsapp' value={formdata.whathsapp} onChange={handlchange} required />
                     </div>
                     <div className="inputCard">
                         <input type="email" placeholder="Entrez votre email" className="email" name='email' value={formdata.email} onChange={handlchange} required />
