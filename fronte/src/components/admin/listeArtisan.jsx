@@ -121,6 +121,7 @@ const AdListArtisan = (props) => {
             <thead>
                 <tr>
                     <th>Photo</th>
+                    <th>Nom d'artisan</th>
                     <th>Mail</th>
                     <th>Nom d'artisan</th>
                     <th>Nom Entreprise</th>
@@ -142,7 +143,7 @@ const AdListArtisan = (props) => {
                         <td>{element.nom} </td>
                         <td>{element.email} </td>
                         <td> {element.entreprise} </td>
-                        <td> {element.whathsapp} </td>
+                        <td> {element.tel} </td>
                         
                         <td>
                             <button class="delete-buttonss" onClick={()=>handleDeleteArtisan(element._id)} >Supprimer</button>
